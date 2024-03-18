@@ -49,4 +49,12 @@ public class UserController {
         return userService.idCheck(userId);
     }
 
+    @PostMapping("/user/phone_check")
+    @ResponseBody
+    public String phoneCheck(@RequestParam("user_phoneNumber") String userPhoneNumber) {
+        return userService.phoneCheck(userPhoneNumber);
+    }
+
+
+
 }

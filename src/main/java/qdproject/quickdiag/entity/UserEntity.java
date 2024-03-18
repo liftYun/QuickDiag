@@ -18,7 +18,7 @@ public class UserEntity {
     @Column
     private String user_name;
     @Column
-    private String user_phone_number    ;
+    private String user_phoneNumber    ;
     @Column
     private String user_birthday;
     @Column
@@ -31,7 +31,7 @@ public class UserEntity {
         userEntity.setUser_id(userDTO.getUser_id());
         userEntity.setUser_password(userDTO.getUser_password());
         userEntity.setUser_name(userDTO.getUser_name());
-        userEntity.setUser_phone_number(userDTO.getUser_phone_number());
+        userEntity.setUser_phoneNumber(userDTO.getUser_phone_number());
         userEntity.setUser_birthday(userDTO.getUser_birthday());
         userEntity.setUser_gender(userDTO.getUser_gender());
 
