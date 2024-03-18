@@ -1,0 +1,30 @@
+/* 가운데 정렬을 위한 스타일 */
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f8f9fa;
+}
+
+/* 폭죽 애니메이션 스타일 */
+@keyframes explode {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+    100% {
+        width: 100px;
+        height: 100px;
+        opacity: 0;
+    }
+}
+
+.firework {
+    position: absolute;
+    background-color: #ffcc00;
+    border-radius: 50%;
+    z-index: 100;
+    animation: explode 3s ease-out forwards;
+}
