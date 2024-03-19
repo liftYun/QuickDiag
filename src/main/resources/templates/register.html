@@ -24,21 +24,27 @@
                         <div class="form-group">
                             <label for="id">ID</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="user_id" name="user_id" onblur="idCheck()" required>
+                                <input type="text" class="form-control" id="user_id" name="user_id" onblur="idCheck()" pattern="[a-zA-Z0-9]{8,20}"  required>
                                 <p id="id_check_result"></p>
                             </div>
-                            <small id="idHelp" class="form-text text-muted">ID를 입력하시면 중복을 체크합니다.</small>
+                            <small id="idHelp" class="form-text text-muted">ID를 입력하시면 중복을 체크합니다.</small><br>
+                            <small class="form-text text-muted">영어 대소문자와 숫자를 사용하여 8자 이상, 20자 이하로 입력해 주세요.</small>
                         </div>
+                        <!--아이디는 영어 대소문자 숫자만 입력가능-->
 
                         <div class="form-group">
                             <label for="password">비밀번호</label>
-                            <input type="password" class="form-control" id="user_password" name="user_password" required>
+                            <input type="password" class="form-control" id="user_password" name="user_password" pattern="[a-zA-Z0-9]{8,20}" required>
+                            <small class="form-text text-muted">영어 대소문자와 숫자를 사용하여 8자 이상, 20자 이하로 입력해 주세요.</small>
                         </div>
+                        <!--비밀번호는 영어 대소문자와 숫자만 입력가능-->
 
                         <div class="form-group">
                             <label for="confirmPassword">비밀번호 확인</label>
-                            <input type="password" class="form-control" id="user_password_confirm" name="user_password_confirm" required>
+                            <input type="password" class="form-control" id="user_password_confirm" name="user_password_confirm" pattern="[a-zA-Z0-9]{8,20}" required>
+                            <small class="form-text text-muted">영어 대소문자와 숫자를 사용하여 8자 이상, 20자 이하로 입력해 주세요.</small>
                         </div>
+                        <!--비밀번호 확인은 영어 대소문자 숫자만 입력가능-->
 
                         <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
                             <p th:text="${errorMessage}"></p>
@@ -46,20 +52,27 @@
 
                         <div class="form-group">
                             <label for="name">이름</label>
-                            <input type="text" class="form-control" id="user_name" name="user_name" required>
+                            <input type="text" class="form-control" id="user_name" name="user_name" pattern="[가-힣a-zA-Z]{1,10}" required>
+                            <small class="form-text text-muted">한글과 영어 대소문자를 이용하여 10자 이하로 입력해주세요.</small>
+
                         </div>
+                        <!--이름은 한글, 영어 대소문자만 가능-->
 
                         <div class="form-group">
                             <label for="phone">전화번호</label>
-                            <input type="tel" class="form-control" id="user_phoneNumber" name="user_phoneNumber"  onblur="phoneNumberCheck()" required>
+                            <input type="tel" class="form-control" id="user_phoneNumber" name="user_phoneNumber" pattern="[0-9]{11}" onblur="phoneNumberCheck()" required>
                             <p id="phoneNumber_check_result"></p>
-                            <small id="phoneNumberHelp" class="form-text text-muted">전화번호를 입력하시면 중복을 체크합니다.</small>
+                            <small id="phoneNumberHelp" class="form-text text-muted">전화번호를 입력하시면 중복을 체크합니다.</small><br>
+                            <small class="form-text text-muted">"-"없이 숫자만 11자 입력해 주세요.</small>
+
                         </div>
+                        <!--전화번호는 숫자와 11자리로만 입력가능-->
 
                         <div class="form-group">
                             <label for="dob">생년월일</label>
-                            <input type="date" class="form-control" id="user_birthday" name="user_birthday" required>
+                            <input type="date" class="form-control" id="user_birthday" name="user_birthday" max="<?php echo date('Y-m-d'); ?>" required>
                         </div>
+                        <!--생년월일은 미래의 값은 입력할 수 없음-->
 
                         <div class="form-group">
                             <label for="gender">성별</label>
@@ -133,6 +146,11 @@ jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha
             }
         });
     };
+
+    //생년월일에 미래 값을 입력할 수 없도록 함.
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById("user_birthday").max = today;
+
 </script>
 
 </script>
