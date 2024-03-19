@@ -31,7 +31,7 @@ public class UserEntity {
         userEntity.setUser_id(userDTO.getUser_id());
         userEntity.setUser_password(userDTO.getUser_password());
         userEntity.setUser_name(userDTO.getUser_name());
-        userEntity.setUser_phoneNumber(userDTO.getUser_phone_number());
+        userEntity.setUser_phoneNumber(userDTO.getUser_phoneNumber());
         userEntity.setUser_birthday(userDTO.getUser_birthday());
         userEntity.setUser_gender(userDTO.getUser_gender());
 
