@@ -26,4 +26,15 @@ public class UserService {
         //Repository로 부터 받은 값에 따라 duplicate, ok를 반환한다.
     }
 
+    public String phoneCheck(String userPhoneNumber) {
+        if (userRepository.existsByUserPhoneNumber(userPhoneNumber)) {
+            return "duplicate";
+        } else {
+            return "ok";
+        }
+    }
+
+
+
+
 }
