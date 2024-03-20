@@ -6,13 +6,18 @@ import qdproject.quickdiag.dto.UserDTO;
 import qdproject.quickdiag.entity.UserEntity;
 import qdproject.quickdiag.repository.UserRepository;
 
+import org.mindrot.jbcrypt.BCrypt;
+
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
-    private  final UserRepository userRepository;
-
+    private final UserRepository userRepository;
 
     public void save(UserDTO userDTO) {
+
+        String hashedPassword = BCrypt.hashpw(userDTO.getUser_password(), BCrypt.gensalt());
+        userDTO.setUser_password(hashedPassword);
         UserEntity userEntity = UserEntity.toUserEntity(userDTO);
         userRepository.save(userEntity);
     }

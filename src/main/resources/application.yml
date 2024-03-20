@@ -1,6 +1,7 @@
 server:
   port: 8082
 
+
 # database 연동 설정
 spring:
   datasource:
@@ -20,3 +21,9 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+
+  spring:
+    security:
+      user:
+        name:
+        password:
