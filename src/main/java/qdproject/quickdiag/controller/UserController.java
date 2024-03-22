@@ -1,5 +1,7 @@
 package qdproject.quickdiag.controller;
 
+import ch.qos.logback.core.model.Model;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequiredArgsConstructor
 public class UserController {
 
+
     private final UserService userService;
 
     @GetMapping("/user/aiDoctor")
@@ -19,9 +22,22 @@ public class UserController {
     } //진단하기로 이동
 
     @GetMapping("/user/login")
-    public String login() {
+    public String loginForm() {
         return "login";
     } //로그인으로 이동
+
+    @PostMapping("/user/login")
+    public String login(@ModelAttribute UserDTO userDTO, HttpSession session) {
+        UserDTO loginResult = userService.login(userDTO);
+        if (loginResult != null) {
+            session.setAttribute("loginUserId", loginResult.getUser_id());
+            System.out.println("로그인 성공: 사용자 " + loginResult.getUser_id() + "으로 로그인하였습니다.");
+            return "main"; // 로그인 성공 시 메인 페이지로 리다이렉트
+        } else {
+            System.out.println("로그인 실패: 아이디 또는 비밀번호가 잘못되었습니다.");
+            return "login";
+        }
+    }
 
 
     @GetMapping("/user/register")
