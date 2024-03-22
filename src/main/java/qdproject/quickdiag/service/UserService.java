@@ -8,6 +8,8 @@ import qdproject.quickdiag.repository.UserRepository;
 
 import org.mindrot.jbcrypt.BCrypt;
 
+import java.util.Optional;
+
 
 @Service
 @RequiredArgsConstructor
@@ -39,7 +41,28 @@ public class UserService {
         }
     }
 
+    public UserDTO login(UserDTO userDTO) {
 
+        //로그인 로직 구현
+        Optional<UserEntity> byUserId = userRepository.findById(userDTO.getUser_id());
+        if(byUserId.isPresent()) {
+            UserEntity userEntity = byUserId.get();
 
+            String hashedUserPassword = userEntity.getUser_password();
+            // 데이터베이스에 저장되어 있는 해싱된 비밀번호
 
+            String inputPassword = userDTO.getUser_password();
+            // 입력된 비밀번호
+
+            if (BCrypt.checkpw(inputPassword, hashedUserPassword)) {
+                // 입력된 비밀번호와 해싱된 비밀번호 비교
+                UserDTO dto = UserDTO.toUserDTO(userEntity);
+                return dto;
+            } else {
+                return null;
+            }
+        } else {
+            return null;
+        }
+    }
 }
