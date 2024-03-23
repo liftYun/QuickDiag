@@ -19,8 +19,16 @@
             <div class="mt-5"></div>
             <div class="d-grid gap-3 col-10 mx-auto">
                 <a href="/user/aiDoctor" class="btn btn-light btn-lg" style="background-color: #F0FFF0;">지금 진단받기</a>
-                <a href="/user/login" class="btn btn-light btn-lg" style="background-color: #F0FFF0;">로그인</a>
                 <a href="/user/register" class="btn btn-light btn-lg" style="background-color: #F0FFF0;">회원가입</a>
+                <div th:if="${loginUserId == null}" class="btn btn-light btn-lg" style="background-color: #F0FFF0;">
+                    <span><a href="/user/login" style="text-decoration: none; color: inherit;">로그인</a></span>
+                </div>
+                <div th:if="${loginUserId != null}" class="btn btn-light btn-lg" style="background-color: #F0FFF0;">
+                    <span><a href="/user/logout" style="text-decoration: none; color: inherit;">로그아웃</a></span>
+                </div>
+                <div th:if="${loginUserId != null}" class="btn btn-light btn-lg" style="background-color: #F0FFF0;">
+                    <span><a href="/user/mypage" style="text-decoration: none; color: inherit;">마이페이지</a></span>
+                </div>
             </div>
         </div>
     </div>

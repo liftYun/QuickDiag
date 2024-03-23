@@ -1,13 +1,16 @@
 package qdproject.quickdiag.controller;
 
-import ch.qos.logback.core.model.Model;
+
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import qdproject.quickdiag.dto.UserDTO;
 import qdproject.quickdiag.service.UserService;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+
 
 @Controller
 @RequiredArgsConstructor
@@ -32,13 +35,12 @@ public class UserController {
         if (loginResult != null) {
             session.setAttribute("loginUserId", loginResult.getUser_id());
             System.out.println("로그인 성공: 사용자 " + loginResult.getUser_id() + "으로 로그인하였습니다.");
-            return "main"; // 로그인 성공 시 메인 페이지로 리다이렉트
+            return "redirect:/"; // 로그인 성공 시 메인 페이지로 리다이렉트
         } else {
             System.out.println("로그인 실패: 아이디 또는 비밀번호가 잘못되었습니다.");
-            return "login";
+            return "redirect:/user/login";
         }
     }
-
 
     @GetMapping("/user/register")
     public String registerForm() {
@@ -71,5 +73,34 @@ public class UserController {
     public String phoneCheck(@RequestParam("user_phoneNumber") String userPhoneNumber) {
         return userService.phoneCheck(userPhoneNumber);
     }// 이미 있는 전화번호의 경우 등록하지 않도록 함
+
+    @GetMapping("/user/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();//세션무효화
+        System.out.println("로그아웃 되었습니다.");
+        return "redirect:/";
+    }
+
+    @GetMapping("/user/mypage")
+    public String myPageForm(HttpSession session, Model model){
+        String loginUserId = (String) session.getAttribute("loginUserId");
+        //세션에서 로그인 정보를 가져옴
+        UserDTO userDTO = userService.mypageForm(loginUserId);
+        //서비스를 통해 loginUserId에 해당하는 정보를 dto폼으로 가져옴
+        model.addAttribute("mypageUser", userDTO);
+        //유저 정보를 dto타입으로 mypage로 보냄
+        return "mypage";
+    }
+
+    @GetMapping("/user/update")
+    public String updateForm(HttpSession session, Model model) {
+        String loginUserId = (String) session.getAttribute("loginUserId");
+        //세션에서 로그인 정보를 가져옴
+        UserDTO userDTO = userService.mypageForm(loginUserId);
+        //서비스를 통해 loginUserId에 해당하는 정보를 dto폼으로 가져옴
+        model.addAttribute("mypageUser", userDTO);
+        return "update";
+    }//업데이트 페이지 띄움
+
 
 }
