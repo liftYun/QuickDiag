@@ -96,11 +96,17 @@ public class UserController {
     public String updateForm(HttpSession session, Model model) {
         String loginUserId = (String) session.getAttribute("loginUserId");
         //세션에서 로그인 정보를 가져옴
-        UserDTO userDTO = userService.mypageForm(loginUserId);
+        UserDTO userDTO = userService.updateForm(loginUserId);
         //서비스를 통해 loginUserId에 해당하는 정보를 dto폼으로 가져옴
         model.addAttribute("mypageUser", userDTO);
         return "update";
     }//업데이트 페이지 띄움
+
+    @PostMapping("/user/update")
+    public String updateUser(@ModelAttribute("userDTO") UserDTO userDTO) {
+        userService.updateUser(userDTO);
+        return "redirect:/user/mypage";
+    }
 
 
 }
