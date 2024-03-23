@@ -1,12 +1,11 @@
 package qdproject.quickdiag.service;
 
 import lombok.RequiredArgsConstructor;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 import qdproject.quickdiag.dto.UserDTO;
 import qdproject.quickdiag.entity.UserEntity;
 import qdproject.quickdiag.repository.UserRepository;
-
-import org.mindrot.jbcrypt.BCrypt;
 
 import java.util.Optional;
 
@@ -65,4 +64,28 @@ public class UserService {
             return null;
         }
     }
+
+    public UserDTO mypageForm(String loginUserId) {
+        Optional<UserEntity> optionalUserEntity = userRepository.findById(loginUserId);
+        //아이디에 해당하는 정보를 데이터베이스에서 Entuty타입으로 가져옴
+        if(optionalUserEntity.isPresent()){
+            return UserDTO.toUserDTO(optionalUserEntity.get());
+            // 엔티티에 있는 정보를 dto 타입으로 바꾼 뒤 서비스로 반환
+        }
+        else{
+            return null;
+        }
+    }
+
+
+
+//    public void update(MemberDTO memberDTO) {
+//        memberRepository.save(MemberEntity.toUpdateMemberEntity(memberDTO));
+//        //save는 이미 값이 있으면 update쿼리를 보낸다.
+//        //입력받은 dto를 entity로 바꾸어 데이터베이스로 보낸다
+//    }
+
+
+
+
 }
