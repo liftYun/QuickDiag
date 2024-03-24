@@ -18,12 +18,6 @@
         function toggleList(value) {
             var list = document.getElementById(value);
             list.classList.toggle("hidden")
-
-            // if (list.classList.contains("hidden")) {
-            //     list.classList.remove("hidden");
-            // } else {
-            //     list.classList.add("hidden");
-            // }
         }
     </script>
 
@@ -49,71 +43,68 @@
                 <button class="btn btn-light btn-lg" style="background-color: #F0FFF0;" value="arm" onclick="toggleList(value)">팔</button>
                 <button class="btn btn-light btn-lg" style="background-color: #F0FFF0;" value="leg" onclick="toggleList(value)">다리</button>
             </div><br>
-<!--            <ul class="hidden" id="head">-->
-<!--                <li><button class="btn btn-outline-primary m-2"><label><input type="checkbox">두통</label></button></li>-->
-<!--                <li><button class="btn btn-outline-primary m-2"><label><input type="checkbox">두통</label></button></li>-->
-<!--                <li><button class="btn btn-outline-primary m-2"><label><input type="checkbox">두통</label></button></li>-->
-<!--            </ul>-->
             <form action="/diag/askAI" method="POST">
                 <ul id="head" class="hidden" type="none">
                     <li><p style="color: rgb(49,109,244)">머리</p></li>
-                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="head" value="pail">두통</label></p></li>
-                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="head" value="fever">발열</label></p></li>
-                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="head" value="anemia">빈혈</label></p></li>
+                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="head[]" value="두통">두통</label></p></li>
+                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="head[]" value="발열">발열</label></p></li>
+                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="head[]" value="빈혈">빈혈</label></p></li>
                 </ul>
                 <ul id="neck" class="hidden" type="none">
                     <li><p style="color: rgb(49,109,244)">목</p></li>
-                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox">통증</label></p></li>
-                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox">발열</label></p></li>
-                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox">붓기</label></p></li>
-                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox">멍울</label></p></li>
+                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="neck[]" value="통증">통증</label></p></li>
+                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="neck[]" value="발열">발열</label></p></li>
+                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="neck[]" value="붓기">붓기</label></p></li>
+                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="neck[]" value="멍울">멍울</label></p></li>
                 </ul>
                 <ul id="shoulder" class="hidden" type="none">
                     <li><p style="color: rgb(49,109,244)">어깨</p></li>
-                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox">통증</label></p></li>
-                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox">발열</label></p></li>
-                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox">가동범위 제한</label></p></li>
-                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox">소리</label></p></li>
+                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="shoulder[]" value="통증">통증</label></p></li>
+                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="shoulder[]" value="발열">발열</label></p></li>
+                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="shoulder[]" value="가동범위 제한">가동범위 제한</label></p></li>
+                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="shoulder[]" value="소리">소리</label></p></li>
                 </ul>
                 <ul id="chest" class="hidden" type="none">
                     <li><p style="color: rgb(49,109,244)">가슴</p></li>
-                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox">근육통</label></p></li>
-                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox">내부통증</label></p></li>
-                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox">숨쉬기 어려움</label></p></li>
-                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox">과한 심박수</label></p></li>
+                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="chest[]" value="근육통">근육통</label></p></li>
+                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="chest[]" value="내부통증">내부통증</label></p></li>
+                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="chest[]" value="숨쉬기 어려움">숨쉬기 어려움</label></p></li>
+                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="chest[]" value="과한 심박수">과한 심박수</label></p></li>
                 </ul>
                 <ul id="stomach" class="hidden" type="none">
                     <li><p style="color: rgb(49,109,244)">배</p></li>
-                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox">통증</label></p></li>
-                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox">설사</label></p></li>
-                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox">변비</label></p></li>
-                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox">가스</label></p></li>
-                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox">팽창</label></p></li>
+                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="stomach[]" value="통증">통증</label></p></li>
+                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="stomach[]" value="설사">설사</label></p></li>
+                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="stomach[]" value="변비">변비</label></p></li>
+                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="stomach[]" value="가스">가스</label></p></li>
+                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="stomach[]" value="팽창">팽창</label></p></li>
                 </ul>
                 <ul id="ass" class="hidden" type="none">
                     <li><p style="color: rgb(49,109,244)">엉덩이</p></li>
-                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox">두통</label></p></li>
-                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox">두통</label></p></li>
-                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox">두통</label></p></li>
+                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="ass[]" value="통증">통증</label></p></li>
+                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="ass[]" value="출혈">출혈</label></p></li>
+                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="ass[]" value="멍울">멍울</label></p></li>
                 </ul>
                 <ul id="waist" class="hidden" type="none">
                     <li><p style="color: rgb(49,109,244)">허리</p></li>
-                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox">두통</label></p></li>
-                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox">두통</label></p></li>
-                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox">두통</label></p></li>
+                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="waist[]" value="통증">통증</label></p></li>
+                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="waist[]" value="저림">저림</label></p></li>
+                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="waist[]" value="마비">마비</label></p></li>
                 </ul>
                 <ul id="arm" class="hidden" type="none">
                     <li><p style="color: rgb(49,109,244)">팔</p></li>
-                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox">두통</label></p></li>
-                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox">두통</label></p></li>
-                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox">두통</label></p></li>
+                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="arm[]" value="통증">통증</label></p></li>
+                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="arm[]" value="저림">저림</label></p></li>
+                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="arm[]" value="마비">마비</label></p></li>
                 </ul>
                 <ul id="leg" class="hidden" type="none">
                     <li><p style="color: rgb(49,109,244)">다리</p></li>
-                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox">두통</label></p></li>
-                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox">두통</label></p></li>
-                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox">두통</label></p></li>
+                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="leg[]" value="통증">통증</label></p></li>
+                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="leg[]" value="저림">저림</label></p></li>
+                    <li><p class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><label><input type="checkbox" name="leg[]" value="마비">마비</label></p></li>
                 </ul>
+                <input type="submit" class="btn btn-light btn-lg" style="background-color: #F0FFF0;" value="확인">
+                <input type="reset" class="btn btn-light btn-lg" style="background-color: #F0FFF0;" value="취소">
             </form>
         </div>
     </main>
@@ -122,12 +113,6 @@
 <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-<!--<button onclick="toggleList()">목록 토글</button>-->
-<!--<ul id="myList" class="hidden">-->
-<!--    <li>아이템 1</li>-->
-<!--    <li>아이템 2</li>-->
-<!--    <li>아이템 3</li>-->
-<!--</ul>-->
 
 </body>
 </html>
