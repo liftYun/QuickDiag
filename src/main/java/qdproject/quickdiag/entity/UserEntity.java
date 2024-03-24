@@ -38,4 +38,5 @@ public class UserEntity {
         return userEntity;
         //dto에서 받은 dto객체를 entity 객체로 변환하는 역하을 하는 메소드
     }
+
 }

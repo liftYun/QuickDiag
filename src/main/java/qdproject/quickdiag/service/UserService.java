@@ -1,12 +1,13 @@
 package qdproject.quickdiag.service;
 
 import lombok.RequiredArgsConstructor;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 import qdproject.quickdiag.dto.UserDTO;
 import qdproject.quickdiag.entity.UserEntity;
 import qdproject.quickdiag.repository.UserRepository;
 
-import org.mindrot.jbcrypt.BCrypt;
+import java.util.Optional;
 
 
 @Service
@@ -38,6 +39,51 @@ public class UserService {
             return "ok";
         }
     }
+
+    public UserDTO login(UserDTO userDTO) {
+
+        //로그인 로직 구현
+        Optional<UserEntity> byUserId = userRepository.findById(userDTO.getUser_id());
+        if(byUserId.isPresent()) {
+            UserEntity userEntity = byUserId.get();
+
+            String hashedUserPassword = userEntity.getUser_password();
+            // 데이터베이스에 저장되어 있는 해싱된 비밀번호
+
+            String inputPassword = userDTO.getUser_password();
+            // 입력된 비밀번호
+
+            if (BCrypt.checkpw(inputPassword, hashedUserPassword)) {
+                // 입력된 비밀번호와 해싱된 비밀번호 비교
+                UserDTO dto = UserDTO.toUserDTO(userEntity);
+                return dto;
+            } else {
+                return null;
+            }
+        } else {
+            return null;
+        }
+    }
+
+    public UserDTO mypageForm(String loginUserId) {
+        Optional<UserEntity> optionalUserEntity = userRepository.findById(loginUserId);
+        //아이디에 해당하는 정보를 데이터베이스에서 Entuty타입으로 가져옴
+        if(optionalUserEntity.isPresent()){
+            return UserDTO.toUserDTO(optionalUserEntity.get());
+            // 엔티티에 있는 정보를 dto 타입으로 바꾼 뒤 서비스로 반환
+        }
+        else{
+            return null;
+        }
+    }
+
+
+
+//    public void update(MemberDTO memberDTO) {
+//        memberRepository.save(MemberEntity.toUpdateMemberEntity(memberDTO));
+//        //save는 이미 값이 있으면 update쿼리를 보낸다.
+//        //입력받은 dto를 entity로 바꾸어 데이터베이스로 보낸다
+//    }
 
 
 
