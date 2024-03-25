@@ -151,7 +151,7 @@ jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha
         });
     };
 
-    //생년월일에 미래 값을 입력할 수 없도록 함.
+    //생년월일에 미래 값을 입력할 수 없도록 하는 js.
     const today = new Date().toISOString().split('T')[0];
     document.getElementById("user_birthday").max = today;
 
