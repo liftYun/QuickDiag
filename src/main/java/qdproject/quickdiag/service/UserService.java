@@ -102,6 +102,9 @@ public class UserService {
         userRepository.save(userEntity);
     }
 
-
-
+    public void userDelete(String userId) {
+        // UserRepository를 사용하여 userId에 해당하는 사용자를 삭제합니다.
+        userRepository.deleteById(userId);
+        System.out.println("사용자 삭제 완료: " + userId);
+    }
 }
