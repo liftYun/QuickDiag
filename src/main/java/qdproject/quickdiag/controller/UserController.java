@@ -108,5 +108,20 @@ public class UserController {
         return "redirect:/user/mypage";
     }
 
+    @GetMapping("/user/delete")
+    public String userDelete(HttpSession session) {
+        String loginUserId = (String) session.getAttribute("loginUserId");
+        if (loginUserId != null) {
+            userService.userDelete(loginUserId);
+            session.invalidate(); // 세션 무효화
+            System.out.println("회원 탈퇴 완료");
+        } else {
+            System.out.println("세션에 로그인된 사용자 ID가 없습니다.");
+        }
+        return "redirect:/"; // 홈페이지로 리다이렉트
+    }
+
+
+
 
 }

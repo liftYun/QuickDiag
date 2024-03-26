@@ -47,7 +47,7 @@
 
                         <div class="text-center">
                             <a href="/user/update" class="btn bg-success text-white">회원정보 수정</a>
-                            <a href="/user/update" class="btn bg-secondary text-white">회원 탈퇴하기</a>
+                            <a href="/user/delete" id="deleteUser" class="btn bg-secondary text-white">회원 탈퇴하기</a>
                         </div>
 
 
@@ -57,6 +57,27 @@
         </div>
     </div>
 </div>
+
+<script>
+    //회원 탈퇴 시 경고창 생성
+    document.getElementById("deleteUser").addEventListener("click", function (event) {
+        event.preventDefault();
+        if(confirm("회원 탈퇴하겠습니까?")){
+            fetch("/user/delete", {
+                method : "get"
+            })
+                .then(respone => {
+                    if(respone.redirected){
+                        window.location.href = respone.url;
+                    }
+                })
+                .catch(error =>{
+                    console.error("탈퇴 중 오류 발생", error);
+                })
+        }
+        
+    })
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
