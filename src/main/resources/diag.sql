@@ -45,5 +45,6 @@ VALUES (1, 'pail', 1008);
 INSERT INTO Symptoms (SymptomID, SymptomName, BodyPartID)
 VALUES (1, 'pail', 1009);*/
 
+select * from user;
 select * from Symptoms;
 select * from BodyParts;
