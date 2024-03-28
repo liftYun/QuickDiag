@@ -11,7 +11,7 @@ import java.util.concurrent.Flow;
 public class ChatService {
 
     public String runScriptWithInput(String userInput) {
-        ProcessBuilder processBuilder = new ProcessBuilder("node", "src/main/resources/aiAsk.js", userInput);
+        ProcessBuilder processBuilder = new ProcessBuilder("node", "src/main/resources/static/js/aiAsk.js", userInput);
         processBuilder.redirectErrorStream(true);
 
         try {
