@@ -19,6 +19,7 @@ configurations {
 
 repositories {
 	mavenCentral()
+	maven { url "https://maven.google.com" }
 }
 
 dependencies {
@@ -33,6 +34,7 @@ dependencies {
 	implementation 'org.mindrot:jbcrypt:0.4'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation group: 'org.thymeleaf', name: 'thymeleaf-spring6', version: '3.1.2.RELEASE'
+	implementation group: 'com.google.guava', name: 'guava', version: '33.1.0-jre'
 }
 
 tasks.named('test') {

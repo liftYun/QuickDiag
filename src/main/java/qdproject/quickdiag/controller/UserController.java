@@ -120,8 +120,4 @@ public class UserController {
         }
         return "redirect:/"; // 홈페이지로 리다이렉트
     }
-
-
-
-
 }
