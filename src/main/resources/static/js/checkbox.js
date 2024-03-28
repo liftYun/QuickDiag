@@ -14,6 +14,9 @@ window.onload = function() {
             if (document.getElementById('tab-1').checked) {
                 document.getElementById('tab-1Checkbox').style.display = 'block';
             }
+            else if (document.getElementById('tab-2').checked) {
+                document.getElementById('tab-2Checkbox').style.display = 'block';
+            }
             // 필요한 경우 여기서 다른 조건들을 추가할 수 있습니다.
         });
     });

@@ -36,7 +36,7 @@ html {
     background: var(--greyLight-1);
 }
 
-.components {
+/*.components {
     width: 75rem;
     height: 40rem;
     border-radius: 3rem;
@@ -48,7 +48,25 @@ html {
     grid-column-gap: 5rem;
     grid-row-gap: 2.5rem;
     align-items: center;
+}*/
+.components {
+    width: 75rem;
+    height: 40rem;
+    border-radius: 3rem;
+    box-shadow: 0.8rem 0.8rem 1.4rem var(--greyLight-2), -0.2rem -0.2rem 1.8rem var(--white);
+    padding: 4rem;
+    display: grid;
+    grid-template-columns: 1fr; /* 1열로 고정 */
+    grid-auto-rows: min-content; /* 각 행의 높이가 그 행의 내용에 따라 자동으로 결정됨 */
+    grid-gap: 2.5rem; /* 행과 열 사이의 간격 */
+    justify-items: center; /* 모든 아이템들을 가로 방향으로 중앙에 정렬 */
+    align-items: center; /* 모든 아이템들을 세로 방향으로 중앙에 정렬 */
+    justify-content: center; /* 그리드 자체를 가로 방향으로 중앙에 정렬 */
+    align-content: center; /* 그리드 자체를 세로 방향으로 중앙에 정렬 */
+    position: relative;
 }
+
+
 
 /*  SWITCH  */
 .switch {
@@ -113,13 +131,13 @@ html {
 .checkbox input {
     display: none;
 }
-.checkbox__1, .checkbox__2 {
+.checkbox__1, .checkbox__2, .checkbox__3, .checkbox__4 {
     width: 6rem;
     display: flex;
     justify-content: center;
     padding: 10px;
 }
-.checkbox__1 label, .checkbox__2 label {
+.checkbox__1 label, .checkbox__2 label, .checkbox__3 label, .checkbox__4 label {
     box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
     cursor: pointer;
     position: relative;
@@ -130,19 +148,19 @@ html {
     width: 2.8rem;
     height: 2.8rem;
 }
-.checkbox__1 label:hover i, .checkbox__2 label:hover i {
+.checkbox__1 label:hover i, .checkbox__2 label:hover i, .checkbox__3 label:hover i, .checkbox__4 label:hover i {
     color: var(--primary);
 }
-.checkbox__1 label i, .checkbox__2 label i {
+.checkbox__1 label i, .checkbox__2 label i, .checkbox__3 label i, .checkbox__4 label i {
     font-size: 1.8rem;
     font-weight: 700;
     color: var(--greyDark);
     transition: 0.3s ease;
 }
-.checkbox__1 input:checked ~ label, .checkbox__2 input:checked ~ label {
+.checkbox__1 input:checked ~ label, .checkbox__2 input:checked ~ label, .checkbox__3 input:checked ~ label, .checkbox__4 input:checked ~ label {
     box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
 }
-.checkbox__1 input:checked ~ label i, .checkbox__2 input:checked ~ label i {
+.checkbox__1 input:checked ~ label i, .checkbox__2 input:checked ~ label i, .checkbox__3 input:checked ~ label i, .checkbox__4 input:checked ~ label i {
     color: var(--primary);
 }
 
@@ -227,18 +245,21 @@ html {
     font-size: 1.6rem;
 }
 
+
 /*  CHIP  */
 .chip {
-    grid-column: 2/3;
-    grid-row: 3/4;
-    justify-self: center;
-    width: 17rem;
-    height: 4rem;
+    position: fixed; /* 위치를 고정 */
+    top: 0; /* 상단에서 0의 위치에 */
+    left: 50%; /* 왼쪽에서 50% 위치에 (가운데 정렬을 위해) */
+    transform: translateX(-50%); /* X축 기준으로 -50% 이동하여 정확한 중앙 정렬 */
+    width: 34rem;
+    height: 8rem;
     border-radius: 1rem;
     box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 1000; /* 다른 요소들 위에 보이도록 z-index 설정 */
 }
 .chip__icon {
     width: 3rem;
@@ -406,17 +427,31 @@ html {
 }
 
 /*  SEGMENTED-CONTROL */
-.segmented-control {
+/*.segmented-control {
     grid-column: 3/4;
     grid-row: 1/2;
-    width: 20.4rem;
+    width: 61.2rem;
     height: 4rem;
     box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
     border-radius: 1rem;
     display: flex;
     align-items: center;
     position: relative;
+}*/
+.segmented-control {
+
+    width: 61.2rem;
+    height: 4rem;
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0; /* 상단에 고정 */
+    left: 50%; /* 가로 중앙 정렬을 위해 */
+    transform: translateX(-50%); /* 정확한 가로 중앙 정렬을 위해 */
 }
+
 .segmented-control input {
     display: none;
 }
@@ -424,7 +459,7 @@ html {
     transition: all 0.5s ease;
     color: var(--primary);
 }
-.segmented-control__1, .segmented-control__2, .segmented-control__3 {
+.segmented-control__1, .segmented-control__2, .segmented-control__3, .segmented-control__4, .segmented-control__5, .segmented-control__6, .segmented-control__7, .segmented-control__8, .segmented-control__9 {
     width: 6.8rem;
     height: 3.6rem;
     font-size: 1.4rem;
@@ -435,7 +470,7 @@ html {
     color: var(--greyDark);
     transition: all 0.5s ease;
 }
-.segmented-control__1:hover, .segmented-control__2:hover, .segmented-control__3:hover {
+.segmented-control__1:hover, .segmented-control__2:hover, .segmented-control__3:hover, .segmented-control__4:hover, .segmented-control__5:hover, .segmented-control__6:hover, .segmented-control__7:hover, .segmented-control__8:hover, .segmented-control__9:hover {
     color: var(--primary);
 }
 .segmented-control__color {
@@ -476,18 +511,18 @@ html {
     transform: translateX(34rem);
     transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
-#tab-1:checked ~ .segmented-control__color {
-    transform: translateX(42.8rem);
+#tab-7:checked ~ .segmented-control__color {
+    transform: translateX(40.8rem);
     transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-#tab-2:checked ~ .segmented-control__color {
-    transform: translateX(49.6rem);
+#tab-8:checked ~ .segmented-control__color {
+    transform: translateX(47.6rem);
     transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-#tab-3:checked ~ .segmented-control__color {
-    transform: translateX(57.4rem);
+#tab-9:checked ~ .segmented-control__color {
+    transform: translateX(54.4rem);
     transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
