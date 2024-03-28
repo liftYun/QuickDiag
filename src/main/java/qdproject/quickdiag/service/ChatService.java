@@ -11,11 +11,7 @@ import java.util.concurrent.Flow;
 public class ChatService {
 
     public String runScriptWithInput(String userInput) {
-<<<<<<< HEAD
-        ProcessBuilder processBuilder = new ProcessBuilder("node", "src/main/resources/static/aiAsk.js", userInput);
-=======
         ProcessBuilder processBuilder = new ProcessBuilder("node", "src/main/resources/static/js/aiAsk.js", userInput);
->>>>>>> liftyun
         processBuilder.redirectErrorStream(true);
 
         try {
