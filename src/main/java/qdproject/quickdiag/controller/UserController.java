@@ -19,11 +19,6 @@ public class UserController {
 
     private final UserService userService;
 
-    @GetMapping("/user/aiDoctor")
-    public String doctor() {
-        return "aiDoctor";
-    } //진단하기로 이동
-
     @GetMapping("/user/login")
     public String loginForm() {
         return "login";
