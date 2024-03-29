@@ -29,7 +29,7 @@
             <span><a href="/user/login"  style="text-decoration: none; color: inherit;" onclick="alert('로그인이 필요합니다.');">지금 진단받기</a></span>
         </div>
         <div th:unless="${loginUserId == null}" class="btn btn__primary">
-            <a href="/user/aiDoctor" style="text-decoration: none; color: inherit;">지금 진단받기</a>
+            <a href="/diag/selectDiag" style="text-decoration: none; color: inherit;">지금 진단받기</a>
         </div>
         <div th:if="${loginUserId == null}" class="btn btn__primary">
             <span><a href="/user/register" style="text-decoration: none; color: inherit;">회원가입</a></span>
