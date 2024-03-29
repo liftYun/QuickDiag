@@ -11,7 +11,7 @@ import qdproject.quickdiag.service.UserService;
 public class MapController {
 
     private final UserService userService;
-    @GetMapping("/map")
+    @GetMapping("/user/map")
     public String map() {
         return "map";
     }
