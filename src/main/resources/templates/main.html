@@ -28,7 +28,7 @@
             <span><a href="/user/login"  style="text-decoration: none; color: white;" onclick="alert('로그인이 필요합니다.');" class="btn btn__primary">지금 진단받기</a></span>
         </div>
         <div th:unless="${loginUserId == null}"><!-- loginUserId 가 null 이 아닐때 나타나는 조건부 -->
-            <a href="/user/aiDoctor" style="text-decoration: none; color: white;" class="btn btn__primary">지금 진단받기</a>
+            <a href="/diag/selectDiag" style="text-decoration: none; color: white;" class="btn btn__primary">지금 진단받기</a>
         </div>
         <div th:if="${loginUserId == null}"><!-- loginUserId 가 null 일때 나타나는 조건부. -->
             <span><a href="/user/login" style="text-decoration: none; color: white;" class="btn btn__primary">로그인</a></span>

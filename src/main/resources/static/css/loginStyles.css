@@ -36,7 +36,7 @@ html {
     background: var(--greyLight-1);
 }
 
-/*.components {
+.components {
     width: 75rem;
     height: 40rem;
     border-radius: 3rem;
@@ -48,25 +48,7 @@ html {
     grid-column-gap: 5rem;
     grid-row-gap: 2.5rem;
     align-items: center;
-}*/
-.components {
-    width: 75rem;
-    height: 40rem;
-    border-radius: 3rem;
-    box-shadow: 0.8rem 0.8rem 1.4rem var(--greyLight-2), -0.2rem -0.2rem 1.8rem var(--white);
-    padding: 4rem;
-    display: grid;
-    grid-template-columns: 1fr; /* 1열로 고정 */
-    grid-auto-rows: min-content; /* 각 행의 높이가 그 행의 내용에 따라 자동으로 결정됨 */
-    grid-gap: 2.5rem; /* 행과 열 사이의 간격 */
-    justify-items: center; /* 모든 아이템들을 가로 방향으로 중앙에 정렬 */
-    align-items: center; /* 모든 아이템들을 세로 방향으로 중앙에 정렬 */
-    justify-content: center; /* 그리드 자체를 가로 방향으로 중앙에 정렬 */
-    align-content: center; /* 그리드 자체를 세로 방향으로 중앙에 정렬 */
-    position: relative;
 }
-
-
 
 /*  SWITCH  */
 .switch {
@@ -131,18 +113,13 @@ html {
 .checkbox input {
     display: none;
 }
-.checkbox__1, .checkbox__2, .checkbox__3, .checkbox__4 {
-   /* width: 6rem;
+.checkbox__1, .checkbox__2 {
+    width: 6rem;
     display: flex;
     justify-content: center;
-    padding: 10px;*/
-    display: inline-block; /* 혹은 다른 수평 정렬 속성 사용 */
-    width: auto; /* 필요에 따라 너비 조정 */
-    padding: 10px;
-
 }
-.checkbox__1 label, .checkbox__2 label, .checkbox__3 label, .checkbox__4 label {
-   /* box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+.checkbox__1 label, .checkbox__2 label {
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
     cursor: pointer;
     position: relative;
     display: flex;
@@ -150,51 +127,21 @@ html {
     align-items: center;
     border-radius: 0.5rem;
     width: 2.8rem;
-    height: 2.8rem;*/
-    /* 기존 스타일 */
-    box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
-    cursor: pointer;
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    border-radius: 0.5rem;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--greyDark);
-    transition: 0.3s ease;
-    /* 수정된 스타일 */
-    display: inline-block; /* 라벨을 인라인 블록으로 설정하여 텍스트 크기에 따라 가변적으로 조정 */
-    padding: 10px; /* 원하는 여백 조정 */
-    min-width: 2.8rem; /* 최소 너비를 글자 크기에 따라 자동 조정 */
-    white-space: nowrap; /* 텍스트가 길어지더라도 한 줄로 유지되도록 설정 */
-
+    height: 2.8rem;
 }
-.checkbox__1 label:hover i, .checkbox__2 label:hover i, .checkbox__3 label:hover i, .checkbox__4 label:hover i {
+.checkbox__1 label:hover i, .checkbox__2 label:hover i {
     color: var(--primary);
 }
-.checkbox__1 label i, .checkbox__2 label i, .checkbox__3 label i, .checkbox__4 label i {
-    /*font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--greyDark);
-    transition: 0.3s ease;*/
-    /*font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--greyDark);
-    transition: 0.3s ease;
-    writing-mode: horizontal-tb; !* 가로로 텍스트를 늘림 *!
-    white-space: nowrap; !* 줄 바꿈을 방지하여 가로로 계속 표시 *!*/
-    font-style: normal; /* 기울어진 스타일을 일반 스타일로 변경 */
+.checkbox__1 label i, .checkbox__2 label i {
     font-size: 1.8rem;
     font-weight: 700;
     color: var(--greyDark);
     transition: 0.3s ease;
-    writing-mode: horizontal-tb; /* 가로로 텍스트를 늘림 */
-    white-space: nowrap; /* 줄 바꿈을 방지하여 가로로 계속 표시 */
 }
-.checkbox__1 input:checked ~ label, .checkbox__2 input:checked ~ label, .checkbox__3 input:checked ~ label, .checkbox__4 input:checked ~ label {
+.checkbox__1 input:checked ~ label, .checkbox__2 input:checked ~ label {
     box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
 }
-.checkbox__1 input:checked ~ label i, .checkbox__2 input:checked ~ label i, .checkbox__3 input:checked ~ label i, .checkbox__4 input:checked ~ label i {
+.checkbox__1 input:checked ~ label i, .checkbox__2 input:checked ~ label i {
     color: var(--primary);
 }
 
@@ -250,13 +197,18 @@ html {
     justify-content: center;
     cursor: pointer;
     transition: 0.3s ease;
+    border: none !important; /* 테두리 제거 */
 }
+
 .btn__primary {
     grid-column: 1/2;
     grid-row: 4/5;
     background: var(--primary);
     box-shadow: inset 0.2rem 0.2rem 1rem var(--primary-light), inset -0.2rem -0.2rem 1rem var(--primary-dark), 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
     color: var(--greyLight-1);
+    width: calc(100% - 2rem); /* 입력창과 로그인 버튼의 너비를 조정합니다. */
+    padding: 0.5rem; /* 입력창과 로그인 버튼의 안쪽 여백을 추가합니다. */
+    margin-top: 1rem; /* 입력창과 로그인 버튼 사이의 간격을 설정합니다. */
 }
 .btn__primary:hover {
     color: var(--white);
@@ -279,21 +231,110 @@ html {
     font-size: 1.6rem;
 }
 
+/*  CLOCK  */
+.clock {
+    grid-column: 2/3;
+    grid-row: 1/3;
+    width: 12rem;
+    height: 12rem;
+    justify-self: center;
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.clock .hand {
+    position: absolute;
+    transform-origin: bottom;
+    bottom: 6rem;
+    border-radius: 0.2rem;
+    z-index: 200;
+}
+.clock .hours {
+    width: 0.4rem;
+    height: 3.2rem;
+    background: var(--greyLight-3);
+}
+.clock .minutes {
+    width: 0.4rem;
+    height: 4.6rem;
+    background: var(--greyDark);
+}
+.clock .seconds {
+    width: 0.2rem;
+    height: 5.2rem;
+    background: var(--primary);
+}
+.clock .point {
+    position: absolute;
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    background: var(--primary);
+    z-index: 300;
+}
+.clock .marker {
+    width: 95%;
+    height: 95%;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+}
+.clock .marker::after {
+    content: "";
+    width: 60%;
+    height: 60%;
+    position: absolute;
+    box-shadow: inset 1px 1px 1px var(--greyLight-2), inset -1px -1px 1px var(--white);
+    border-radius: 50%;
+    top: 20%;
+    left: 20%;
+    filter: blur(1px);
+}
+.clock .marker__1, .clock .marker__2, .clock .marker__3, .clock .marker__4 {
+    position: absolute;
+    border-radius: 0.1rem;
+    box-shadow: inset 1px 1px 1px var(--greyLight-2), inset -1px -1px 1px var(--white);
+}
+.clock .marker__1, .clock .marker__2 {
+    width: 0.2rem;
+    height: 0.6rem;
+    left: 5.6rem;
+}
+.clock .marker__3, .clock .marker__4 {
+    width: 0.6rem;
+    height: 0.2rem;
+    top: 5.6rem;
+}
+.clock .marker__1 {
+    top: 2%;
+}
+.clock .marker__2 {
+    top: 98%;
+    transform: translateY(-0.6rem);
+}
+.clock .marker__3 {
+    left: 2%;
+}
+.clock .marker__4 {
+    left: 98%;
+    transform: translateX(-0.6rem);
+}
 
 /*  CHIP  */
 .chip {
-    position: fixed; /* 위치를 고정 */
-    top: 0; /* 상단에서 0의 위치에 */
-    left: 50%; /* 왼쪽에서 50% 위치에 (가운데 정렬을 위해) */
-    transform: translateX(-50%); /* X축 기준으로 -50% 이동하여 정확한 중앙 정렬 */
-    width: 34rem;
-    height: 8rem;
+    grid-column: 2/3;
+    grid-row: 3/4;
+    justify-self: center;
+    width: 17rem;
+    height: 4rem;
     border-radius: 1rem;
     box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 1000; /* 다른 요소들 위에 보이도록 z-index 설정 */
 }
 .chip__icon {
     width: 3rem;
@@ -461,31 +502,17 @@ html {
 }
 
 /*  SEGMENTED-CONTROL */
-/*.segmented-control {
+.segmented-control {
     grid-column: 3/4;
     grid-row: 1/2;
-    width: 61.2rem;
+    width: 20.4rem;
     height: 4rem;
     box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
     border-radius: 1rem;
     display: flex;
     align-items: center;
     position: relative;
-}*/
-.segmented-control {
-
-    width: 61.2rem;
-    height: 4rem;
-    box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
-    border-radius: 1rem;
-    display: flex;
-    align-items: center;
-    position: absolute;
-    top: 0; /* 상단에 고정 */
-    left: 50%; /* 가로 중앙 정렬을 위해 */
-    transform: translateX(-50%); /* 정확한 가로 중앙 정렬을 위해 */
 }
-
 .segmented-control input {
     display: none;
 }
@@ -493,7 +520,7 @@ html {
     transition: all 0.5s ease;
     color: var(--primary);
 }
-.segmented-control__1, .segmented-control__2, .segmented-control__3, .segmented-control__4, .segmented-control__5, .segmented-control__6, .segmented-control__7, .segmented-control__8, .segmented-control__9 {
+.segmented-control__1, .segmented-control__2, .segmented-control__3 {
     width: 6.8rem;
     height: 3.6rem;
     font-size: 1.4rem;
@@ -504,7 +531,7 @@ html {
     color: var(--greyDark);
     transition: all 0.5s ease;
 }
-.segmented-control__1:hover, .segmented-control__2:hover, .segmented-control__3:hover, .segmented-control__4:hover, .segmented-control__5:hover, .segmented-control__6:hover, .segmented-control__7:hover, .segmented-control__8:hover, .segmented-control__9:hover {
+.segmented-control__1:hover, .segmented-control__2:hover, .segmented-control__3:hover {
     color: var(--primary);
 }
 .segmented-control__color {
@@ -529,34 +556,6 @@ html {
 
 #tab-3:checked ~ .segmented-control__color {
     transform: translateX(13.6rem);
-    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-#tab-4:checked ~ .segmented-control__color {
-    transform: translateX(20.4rem);
-    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-
-#tab-5:checked ~ .segmented-control__color {
-    transform: translateX(27.2rem);
-    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-
-#tab-6:checked ~ .segmented-control__color {
-    transform: translateX(34rem);
-    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-#tab-7:checked ~ .segmented-control__color {
-    transform: translateX(40.8rem);
-    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-
-#tab-8:checked ~ .segmented-control__color {
-    transform: translateX(47.6rem);
-    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-
-#tab-9:checked ~ .segmented-control__color {
-    transform: translateX(54.4rem);
     transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
@@ -675,4 +674,46 @@ html {
     right: 2rem;
     bottom: 1rem;
     color: #EA4C89;
-}z
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.container-lg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 66.666vh; /* 화면 높이의 2/3 */
+}
+
+.card {
+    width: 32rem; /* 카드의 너비를 40rem으로 설정합니다. */
+    margin: 0 auto; /* 가운데 정렬을 위해 margin을 auto로 설정합니다. */
+}
+
+.card-body {
+    text-align: center; /* 폼을 가운데 정렬 */
+}
+
+.form-group {
+    margin-bottom: 3rem; /* 입력창과 텍스트 사이 간격 조정 */
+}
+
+.form-group label {
+    display: block;
+    font-size: 2rem !important; /* 우선순위 높임 */
+    text-align: left;
+}
+
+.form-group input {
+    width: 100%; /* 입력창이 부모 너비를 따라가도록 설정 */
+}
+
+.centered-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* 부모 요소의 너비를 따라가도록 설정 */
+}
