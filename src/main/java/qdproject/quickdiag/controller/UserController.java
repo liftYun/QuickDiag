@@ -19,11 +19,6 @@ public class UserController {
 
     private final UserService userService;
 
-    @GetMapping("/diag/selectDiag")
-    public String doctor() {
-        return "selectDiag";
-    } //진단하기로 이동
-
     @GetMapping("/user/login")
     public String loginForm() {
         return "login";
@@ -96,28 +91,11 @@ public class UserController {
     public String updateForm(HttpSession session, Model model) {
         String loginUserId = (String) session.getAttribute("loginUserId");
         //세션에서 로그인 정보를 가져옴
-        UserDTO userDTO = userService.updateForm(loginUserId);
+        UserDTO userDTO = userService.mypageForm(loginUserId);
         //서비스를 통해 loginUserId에 해당하는 정보를 dto폼으로 가져옴
         model.addAttribute("mypageUser", userDTO);
         return "update";
     }//업데이트 페이지 띄움
 
-    @PostMapping("/user/update")
-    public String updateUser(@ModelAttribute("userDTO") UserDTO userDTO) {
-        userService.updateUser(userDTO);
-        return "redirect:/user/mypage";
-    }
 
-    @GetMapping("/user/delete")
-    public String userDelete(HttpSession session) {
-        String loginUserId = (String) session.getAttribute("loginUserId");
-        if (loginUserId != null) {
-            userService.userDelete(loginUserId);
-            session.invalidate(); // 세션 무효화
-            System.out.println("회원 탈퇴 완료");
-        } else {
-            System.out.println("세션에 로그인된 사용자 ID가 없습니다.");
-        }
-        return "redirect:/"; // 홈페이지로 리다이렉트
-    }
 }

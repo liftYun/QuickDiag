@@ -16,15 +16,19 @@ import java.util.ArrayList;
 public class DiagController {
     @Autowired
     private ChatService chatService;
-    @GetMapping("/diag/selectDiag")
-    public String selectDiag(){ return "selectDiag"; }//증상선택으로 이동
 
     @GetMapping("/diag/askAI")
     public String askAI(){ return "askAI"; }
 
     @PostMapping("/chat")
-    public String runNodeScript(@RequestParam("userInput") String userInput, Model model) {
-        String scriptOutput = chatService.runScriptWithInput(userInput);
+    public String runNodeScript(@RequestParam("userInput") String userInput, String scriptOutput, Model model) {
+        if(scriptOutput.equals("기타")){
+            userInput = "(" + userInput + ") 이런 증상이 있을때 의심되는 질병을 알려줘.";
+        }
+        else {
+            userInput = "너가 답한 질병인 (" + scriptOutput +") 중 에서 (" + userInput + ") 이런 증상이 있을때 해당하는 질병을 알려줘.";
+        }
+        scriptOutput = chatService.runScriptWithInput(userInput);
         model.addAttribute("scriptOutput", scriptOutput);
         return "askAI";  // 결과를 보여줄 Thymeleaf 템플릿 이름
     }
