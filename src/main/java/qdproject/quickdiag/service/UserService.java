@@ -77,15 +77,34 @@ public class UserService {
         }
     }
 
+    public UserDTO updateForm(String loginUserId) {
+        Optional<UserEntity> optionalUserEntity = userRepository.findById(loginUserId);
+        //아이디에 해당하는 정보를 데이터베이스에서 Entuty타입으로 가져옴
+        if(optionalUserEntity.isPresent()){
+            return UserDTO.toUserDTO(optionalUserEntity.get());
+            // 엔티티에 있는 정보를 dto 타입으로 바꾼 뒤 서비스로 반환
+        }
+        else{
+            return null;
+        }
+    }
 
+    public void updateUser(UserDTO userDTO) {
+        // UserDTO에서 받은 정보를 엔티티로 변환하여 저장
+        UserEntity userEntity = userRepository.findById(userDTO.getUser_id())
+                .orElseThrow(() -> new IllegalArgumentException("User not found with ID: " + userDTO.getUser_id()));
 
-//    public void update(MemberDTO memberDTO) {
-//        memberRepository.save(MemberEntity.toUpdateMemberEntity(memberDTO));
-//        //save는 이미 값이 있으면 update쿼리를 보낸다.
-//        //입력받은 dto를 entity로 바꾸어 데이터베이스로 보낸다
-//    }
+        userEntity.setUser_name(userDTO.getUser_name());
+        userEntity.setUser_phoneNumber(userDTO.getUser_phoneNumber());
+        userEntity.setUser_birthday(userDTO.getUser_birthday());
+        userEntity.setUser_gender(userDTO.getUser_gender());
 
+        userRepository.save(userEntity);
+    }
 
-
-
+    public void userDelete(String userId) {
+        // UserRepository를 사용하여 userId에 해당하는 사용자를 삭제합니다.
+        userRepository.deleteById(userId);
+        System.out.println("사용자 삭제 완료: " + userId);
+    }
 }

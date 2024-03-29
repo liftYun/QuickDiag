@@ -95,3 +95,4 @@ playBtn.addEventListener('click', function(e) {
   wave1.classList.toggle('paused');
   wave2.classList.toggle('paused');
 });
+

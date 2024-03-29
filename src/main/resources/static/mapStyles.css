@@ -1,0 +1,23 @@
+#map {
+    height: 400px;
+    width: 80%;
+    margin-bottom: 20px;
+}
+
+#medicalList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#medicalList li {
+    margin-bottom: 5px;
+    cursor: pointer;
+    color: blue;
+}
+#loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
