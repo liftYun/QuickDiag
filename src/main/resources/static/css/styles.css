@@ -131,26 +131,26 @@ html {
 .checkbox input {
     display: none;
 }
-.checkbox__1, .checkbox__2, .checkbox__3, .checkbox__4 {
-   /* width: 6rem;
-    display: flex;
-    justify-content: center;
-    padding: 10px;*/
+[class^="checkbox__"] {
+    /* width: 6rem;
+     display: flex;
+     justify-content: center;
+     padding: 10px;*/
     display: inline-block; /* 혹은 다른 수평 정렬 속성 사용 */
     width: auto; /* 필요에 따라 너비 조정 */
     padding: 10px;
 
 }
-.checkbox__1 label, .checkbox__2 label, .checkbox__3 label, .checkbox__4 label {
-   /* box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
-    cursor: pointer;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 0.5rem;
-    width: 2.8rem;
-    height: 2.8rem;*/
+[class^="checkbox__"] label {
+    /* box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+     cursor: pointer;
+     position: relative;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     border-radius: 0.5rem;
+     width: 2.8rem;
+     height: 2.8rem;*/
     /* 기존 스타일 */
     box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
     cursor: pointer;
@@ -169,10 +169,10 @@ html {
     white-space: nowrap; /* 텍스트가 길어지더라도 한 줄로 유지되도록 설정 */
 
 }
-.checkbox__1 label:hover i, .checkbox__2 label:hover i, .checkbox__3 label:hover i, .checkbox__4 label:hover i {
+[class^="checkbox__"] label:hover i {
     color: var(--primary);
 }
-.checkbox__1 label i, .checkbox__2 label i, .checkbox__3 label i, .checkbox__4 label i {
+[class^="checkbox__"] label i {
     /*font-size: 1.8rem;
     font-weight: 700;
     color: var(--greyDark);
@@ -191,10 +191,10 @@ html {
     writing-mode: horizontal-tb; /* 가로로 텍스트를 늘림 */
     white-space: nowrap; /* 줄 바꿈을 방지하여 가로로 계속 표시 */
 }
-.checkbox__1 input:checked ~ label, .checkbox__2 input:checked ~ label, .checkbox__3 input:checked ~ label, .checkbox__4 input:checked ~ label {
+[class^="checkbox__"] input:checked ~ label {
     box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
 }
-.checkbox__1 input:checked ~ label i, .checkbox__2 input:checked ~ label i, .checkbox__3 input:checked ~ label i, .checkbox__4 input:checked ~ label i {
+[class^="checkbox__"] input:checked ~ label i, .checkbox__2 input:checked ~ label i, .checkbox__3 input:checked ~ label i, .checkbox__4 input:checked ~ label i {
     color: var(--primary);
 }
 

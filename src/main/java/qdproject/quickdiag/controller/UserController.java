@@ -19,6 +19,9 @@ public class UserController {
 
     private final UserService userService;
 
+    @GetMapping("/user/selectDiag")
+    public String selectDiagForm(){ return "selectDiag"; }
+
     @GetMapping("/user/login")
     public String loginForm() {
         return "login";
