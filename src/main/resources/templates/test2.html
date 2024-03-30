@@ -5,6 +5,92 @@
     <title>Title</title>
 </head>
 <body>
+<div class="container-fluid mt-5">
+    <header class="bg-white border-bottom">
+        <div class="py-3">
+            <h1 class="text-center">증상 선택</h1>
+        </div>
+    </header>
+    <main class="mt-4">
+        <div class="text-center">
+            <h2>아픈 부위</h2>
 
+            <div class="d-flex justify-content-center">
+                <button class="btn btn-light btn-lg" style="background-color: #F0FFF0;" value="head" onclick="toggleList(value)">머리</button><br>
+                <button class="btn btn-light btn-lg" style="background-color: #F0FFF0;" value="neck" onclick="toggleList(value)">목</button>
+                <button class="btn btn-light btn-lg" style="background-color: #F0FFF0;" value="shoulder" onclick="toggleList(value)">어깨</button>
+                <button class="btn btn-light btn-lg" style="background-color: #F0FFF0;" value="chest" onclick="toggleList(value)">가슴</button>
+                <button class="btn btn-light btn-lg" style="background-color: #F0FFF0;" value="stomach" onclick="toggleList(value)">배</button>
+                <button class="btn btn-light btn-lg" style="background-color: #F0FFF0;" value="ass" onclick="toggleList(value)">엉덩이</button>
+                <button class="btn btn-light btn-lg" style="background-color: #F0FFF0;" value="waist" onclick="toggleList(value)">허리</button>
+                <button class="btn btn-light btn-lg" style="background-color: #F0FFF0;" value="arm" onclick="toggleList(value)">팔</button>
+                <button class="btn btn-light btn-lg" style="background-color: #F0FFF0;" value="leg" onclick="toggleList(value)">다리</button>
+            </div><br>
+            <form action="/diag/askAI" method="POST">
+                <ul id="head" class="hidden" type="none">
+                    <li><p style="color: rgb(49,109,244)">머리</p></li>
+                    <li><label  class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><input type="checkbox" name="head[]" value="두통">두통</label></li>
+                    <li><label class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><input type="checkbox" name="head[]" value="발열">발열</label></li>
+                    <li><label class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><input type="checkbox" name="head[]" value="빈혈">빈혈</label></li>
+                </ul>
+                <ul id="neck" class="hidden" type="none">
+                    <li><p style="color: rgb(49,109,244)">목</p></li>
+                    <li><label class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><input type="checkbox" name="neck[]" value="통증">통증</label></li>
+                    <li><label class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><input type="checkbox" name="neck[]" value="발열">발열</label></li>
+                    <li><label class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><input type="checkbox" name="neck[]" value="붓기">붓기</label></li>
+                    <li><label class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><input type="checkbox" name="neck[]" value="멍울">멍울</label></li>
+                </ul>
+                <ul id="shoulder" class="hidden" type="none">
+                    <li><p style="color: rgb(49,109,244)">어깨</p></li>
+                    <li><label class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><input type="checkbox" name="shoulder[]" value="통증">통증</label></li>
+                    <li><label class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><input type="checkbox" name="shoulder[]" value="발열">발열</label></li>
+                    <li><label class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><input type="checkbox" name="shoulder[]" value="가동범위 제한">가동범위 제한</label></li>
+                    <li><label class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><input type="checkbox" name="shoulder[]" value="소리">소리</label></li>
+                </ul>
+                <ul id="chest" class="hidden" type="none">
+                    <li><p style="color: rgb(49,109,244)">가슴</p></li>
+                    <li><label class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><input type="checkbox" name="chest[]" value="근육통">근육통</label></li>
+                    <li><label class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><input type="checkbox" name="chest[]" value="내부통증">내부통증</label></li>
+                    <li><label class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><input type="checkbox" name="chest[]" value="숨쉬기 어려움">숨쉬기 어려움</label></li>
+                    <li><label class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><input type="checkbox" name="chest[]" value="과한 심박수">과한 심박수</label></li>
+                </ul>
+                <ul id="stomach" class="hidden" type="none">
+                    <li><p style="color: rgb(49,109,244)">배</p></li>
+                    <li><label class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><input type="checkbox" name="stomach[]" value="통증">통증</label></li>
+                    <li><label class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><input type="checkbox" name="stomach[]" value="설사">설사</label></li>
+                    <li><label class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><input type="checkbox" name="stomach[]" value="변비">변비</label></li>
+                    <li><label class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><input type="checkbox" name="stomach[]" value="가스">가스</label></li>
+                    <li><label class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><input type="checkbox" name="stomach[]" value="팽창">팽창</label></li>
+                </ul>
+                <ul id="ass" class="hidden" type="none">
+                    <li><p style="color: rgb(49,109,244)">엉덩이</p></li>
+                    <li><label class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><input type="checkbox" name="ass[]" value="통증">통증</label></li>
+                    <li><label class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><input type="checkbox" name="ass[]" value="출혈">출혈</label></li>
+                    <li><label class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><input type="checkbox" name="ass[]" value="멍울">멍울</label></li>
+                </ul>
+                <ul id="waist" class="hidden" type="none">
+                    <li><p style="color: rgb(49,109,244)">허리</p></li>
+                    <li><label class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><input type="checkbox" name="waist[]" value="통증">통증</label></li>
+                    <li><label class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><input type="checkbox" name="waist[]" value="저림">저림</label></li>
+                    <li><label class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><input type="checkbox" name="waist[]" value="마비">마비</label></li>
+                </ul>
+                <ul id="arm" class="hidden" type="none">
+                    <li><p style="color: rgb(49,109,244)">팔</p></li>
+                    <li><label class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><input type="checkbox" name="arm[]" value="통증">통증</label></li>
+                    <li><label class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><input type="checkbox" name="arm[]" value="저림">저림</label></li>
+                    <li><label class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><input type="checkbox" name="arm[]" value="마비">마비</label></li>
+                </ul>
+                <ul id="leg" class="hidden" type="none">
+                    <li><p style="color: rgb(49,109,244)">다리</p></li>
+                    <li><label class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><input type="checkbox" name="leg[]" value="통증">통증</label></li>
+                    <li><label class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><input type="checkbox" name="leg[]" value="저림">저림</label></li>
+                    <li><label class="btn btn-light btn-lg" style="background-color: #F0FFF0;"><input type="checkbox" name="leg[]" value="마비">마비</label></li>
+                </ul>
+                <input type="submit" class="btn btn-light btn-lg" style="background-color: #F0FFF0;" value="확인">
+                <input type="reset" class="btn btn-light btn-lg" style="background-color: #F0FFF0;" value="취소">
+            </form>
+        </div>
+    </main>
+</div>
 </body>
 </html>
