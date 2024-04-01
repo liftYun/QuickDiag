@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import qdproject.quickdiag.service.ChatService;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class DiagController {
             userInput = "(" + userInput + ") 이런 증상이 있을때 의심되는 질병을 알려줘.";
         }
         else {
-            userInput = "너가 답한 질병인 (" + scriptOutput +") 중 에서 (" + userInput + ") 이런 증상이 있을때 해당하는 질병을 알려줘.";
+            userInput = "너가 답한 내용은 (" + scriptOutput +") 이렇다. 이중 질병에 해당하는 것 중 에서 추가로 (" + userInput + ") 이런 증상이 있을때 해당하는 질병을 알려줘.";
         }
         scriptOutput = chatService.runScriptWithInput(userInput);
         model.addAttribute("scriptOutput", scriptOutput);
@@ -44,14 +45,15 @@ public class DiagController {
             @RequestParam(value = "waist[]", required = false) String[] waistSymptoms,
             @RequestParam(value = "arm[]", required = false) String[] armSymptoms,
             @RequestParam(value = "leg[]", required = false) String[] legSymptoms,
-            Model model) {
+            Model model, RedirectAttributes redirectAttributes) {
 
         // 체크박스에서 선택된 값들은 배열로 받아집니다. 필요한 로직을 구현하세요.
         // 예를 들어, 받은 데이터를 로깅하거나 처리하는 코드를 작성할 수 있습니다.
         ArrayList<String> allSymptoms = new ArrayList<>();
         if(headSymptoms == null && neckSymptoms == null && shoulderSymptoms == null && chestSymptoms == null && stomachSymptoms == null
                 && assSymptoms == null && waistSymptoms == null && armSymptoms == null && legSymptoms == null) {
-            return "Error";
+            redirectAttributes.addFlashAttribute("error", "적어도 하나의 증상을 선택해야 합니다.");
+            return "redirect:/user/selectDiag";
         }
         else {
             if (headSymptoms != null) {
