@@ -1,99 +1,103 @@
+let map;
+const infoWindows = [];
 
-//현재 위치를 가져오는 함수
 function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 12 // 초기 확대 수준 설정
+    });
+
+    // 사용자의 현재 위치를 가져옵니다.
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-            var userLocation = {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            const pos = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
-            var map = new google.maps.Map(document.getElementById('map'), {
-                center: userLocation,
-                zoom: 14 // Zoom level
+
+            // 지도의 중심을 사용자의 위치로 설정합니다.
+            map.setCenter(pos);
+
+            // 정형외과를 검색합니다.
+            const request = {
+                location: pos,
+                radius: '5000', // 5km 반경 내에서 검색합니다.
+                query: '정형외과'
+            };
+
+            const service = new google.maps.places.PlacesService(map);
+            service.textSearch(request, function(results, status) {
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    // 가장 가까운 10개의 결과만 사용합니다.
+                    const nearbyResults = results.slice(0, 10);
+                    nearbyResults.forEach(function(result) {
+                        createMarker(result);
+                        addToList(result);
+                    });
+                }
             });
-            var infowindow = new google.maps.InfoWindow();
-            searchMedicalCenter(userLocation, map, infowindow);
-        }, function () {
-            handleLocationError(true);
+        }, function() {
+            handleLocationError(true, map.getCenter());
         });
     } else {
-        handleLocationError(false);
+        // 브라우저가 Geolocation을 지원하지 않을 경우
+        handleLocationError(false, map.getCenter());
     }
-
 }
 
-//위치서비스 오류 처리 함수
-function handleLocationError(browserHasGeolocation) {
-    var userLocation = { lat: 0, lng: 0 };
-    var map = new google.maps.Map(document.getElementById('map'), {
-        center: userLocation,
-        zoom: 14 // Default zoom level
-    });
-    var infowindow = new google.maps.InfoWindow();
-    infowindow.setPosition(userLocation);
-    infowindow.setContent(browserHasGeolocation ?
-        'Error: The Geolocation service failed.' :
-        'Error: Your browser doesn\'t support geolocation.');
-    infowindow.open(map);
-}
-
-//사용자 주변의 병원 검색 함수
-function searchMedicalCenter(location, map, infowindow) {
-    var request = {
-        location: location,
-        rankBy: google.maps.places.RankBy.DISTANCE, // Sort by distance
-        keyword: '안과'
-    };
-
-    var service = new google.maps.places.PlacesService(map);
-    service.nearbySearch(request, function(results, status) {
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
-            var medicalList = document.getElementById('medicalList');
-            medicalList.innerHTML = '';
-
-            // 최대 10개의 병원만 표시
-            var resultsSlice = results.slice(0, 10);
-            resultsSlice.forEach(function (place) {
-                createMarker(place, map, infowindow);
-                addListItem(place, medicalList, map, infowindow);
-            });
-        }
-    });
-}
-
-//지도에 마커를 표시 함수
-function createMarker(place, map, infowindow) {
-    var marker = new google.maps.Marker({
+function createMarker(place) {
+    const marker = new google.maps.Marker({
         map: map,
         position: place.geometry.location,
         title: place.name
     });
 
-    var contentString = '<div><strong>' + place.name + '</strong></div>';
-    var infoWindow = new google.maps.InfoWindow({
-        content: contentString
+    const infowindow = new google.maps.InfoWindow({
+        content: '<div><strong>' + place.name + '</strong></div>'
     });
 
-    marker.addListener('click', function () {
-        infowindow.setContent(contentString);
+    infoWindows.push(infowindow);
+
+    infowindow.open(map, marker);
+
+    marker.addListener('click', function() {
+        closeInfoWindows();
         infowindow.open(map, marker);
     });
-
-    // 마커 위에 정보창을 열어둠
-    infoWindow.open(map, marker);
-
-    return marker;
 }
 
-
-//병원 리스트 생성 함수
-function addListItem(place, medicalList, map, infowindow) {
-    var listItem = document.createElement('li');
-    listItem.textContent = place.name;
-    listItem.addEventListener('click', function () {
-        map.setCenter(place.geometry.location);
-        infowindow.setContent('<div><strong>' + place.name + '</strong></div>');
-        infowindow.open(map);
+function closeInfoWindows() {
+    infoWindows.forEach(function(infowindow) {
+        infowindow.close();
     });
-    medicalList.appendChild(listItem);
+}
+
+function handleLocationError(browserHasGeolocation, pos) {
+    const infoWindow = new google.maps.InfoWindow({ map: map });
+
+    infoWindow.setPosition(pos);
+    infoWindow.setContent(browserHasGeolocation ?
+        'Geolocation 서비스를 사용할 수 없습니다.' :
+        '브라우저가 Geolocation을 지원하지 않습니다.');
+}
+
+// 병원을 리스트에 추가하는 함수
+function addToList(place) {
+    const hospitalList = document.getElementById('hospitals');
+    const listItem = document.createElement('li');
+    listItem.textContent = place.name;
+    listItem.addEventListener('click', function() {
+        // 클릭된 병원의 위치를 지도 중앙으로 설정합니다.
+        map.setCenter(place.geometry.location);
+        // 클릭된 병원의 정보 창을 엽니다.
+        infoWindows.forEach(function(infowindow) {
+            infowindow.close();
+        });
+        const infowindow = new google.maps.InfoWindow({
+            content: '<div><strong>' + place.name + '</strong></div>'
+        });
+        infowindow.setPosition(place.geometry.location);
+        infowindow.open(map);
+        infoWindows.push(infowindow);
+    });
+    hospitalList.appendChild(listItem);
 }

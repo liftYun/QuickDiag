@@ -1,22 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-    <title>근처 병원 리스트</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>내 위치 기반 정형외과 검색</title>
+    <link rel="stylesheet" href="/css/mapStyles.css">
+
 </head>
 <body>
 
-<div class="container">
-    <div class="content">
-        <div>
-            <h1 class="hospital-header">근처 병원 리스트</h1>
-            <ul id="medicalList" class="hospital-list"></ul>
-        </div>
-        <div id="map" class="hospital-map"></div>
-    </div>
-</div>
+<header>
+    <h1>지도에서 확인하기</h1>
+</header>
 
-<script src="/js/mapScripts.js"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJrB7Ah5YJqx_2komtNmYESZmhTPd5x-U&libraries=places&callback=initMap"></script>
+<main id="map-container">
+    <div id="map"></div>
+    <div id="horizontal-container" style="width: 50px;"></div>
+    <div id="container">
+        <div id="hospital-list">
+            <h2>근처##과 리스트</h2>
+            <br>
+            <ul id="hospitals"></ul> <!-- 여기에 병원 목록이 표시됩니다. -->
+        </div>
+    </div>
+</main>
+
+
+
+
+
+<script type="text/javascript" src="/js/mapScripts.js"></script>
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJrB7Ah5YJqx_2komtNmYESZmhTPd5x-U&libraries=places&callback=initMap">
+</script>
 </body>
 </html>

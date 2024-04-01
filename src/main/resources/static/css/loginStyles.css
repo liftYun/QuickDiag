@@ -717,3 +717,34 @@ body, html {
     align-items: center;
     width: 100%; /* 부모 요소의 너비를 따라가도록 설정 */
 }
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #8abdff; /* 배경색 설정 */
+}
+
+.content {
+    text-align: center;
+    display: inline-block;
+    text-align: left;
+    background-color: #ffffff; /* 콘텐츠 영역의 배경색 설정 */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+}
+
+.hospital-header {
+    margin-top: 0;
+}
+
+.hospital-list {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+}
+
+.hospital-map {
+    margin-top: 20px;
+}
