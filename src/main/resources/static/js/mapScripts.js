@@ -2,6 +2,9 @@ let map;
 const infoWindows = [];
 
 function initMap() {
+    // 로딩 화면을 표시합니다.
+    showLoadingScreen();
+
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 12 // 초기 확대 수준 설정
     });
@@ -34,13 +37,22 @@ function initMap() {
                         addToList(result);
                     });
                 }
+
+                // 로딩 화면을 숨깁니다.
+                hideLoadingScreen();
             });
         }, function() {
             handleLocationError(true, map.getCenter());
+
+            // 로딩 화면을 숨깁니다.
+            hideLoadingScreen();
         });
     } else {
         // 브라우저가 Geolocation을 지원하지 않을 경우
         handleLocationError(false, map.getCenter());
+
+        // 로딩 화면을 숨깁니다.
+        hideLoadingScreen();
     }
 }
 
@@ -100,4 +112,19 @@ function addToList(place) {
         infoWindows.push(infowindow);
     });
     hospitalList.appendChild(listItem);
+}
+
+// 지도 로딩이 완료되면 로딩 화면을 숨깁니다.
+google.maps.event.addDomListener(window, 'load', function() {
+    var loadingScreen = document.getElementById('loading-screen');
+    loadingScreen.style.display = 'none';
+});
+// 로딩 화면을 보여주는 함수
+function showLoadingScreen() {
+    document.getElementById('loading-screen').style.display = 'block';
+}
+
+// 로딩 화면을 숨기는 함수
+function hideLoadingScreen() {
+    document.getElementById('loading-screen').style.display = 'none';
 }
