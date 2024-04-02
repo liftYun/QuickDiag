@@ -400,7 +400,7 @@ html {
 }*/
 .segmented-control {
 
-    width: 61.2rem;
+    width: 68rem;
     height: 4rem;
     box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
     border-radius: 1rem;
@@ -419,7 +419,9 @@ html {
     transition: all 0.5s ease;
     color: var(--primary);
 }
-.segmented-control__1, .segmented-control__2, .segmented-control__3, .segmented-control__4, .segmented-control__5, .segmented-control__6, .segmented-control__7, .segmented-control__8, .segmented-control__9 {
+
+[class^="segmented-control__"]{ /* 아래 반복되는 것을 동일적용 되도록 수식 사용*/
+    /*.segmented-control__1, .segmented-control__2, .segmented-control__3, .segmented-control__4, .segmented-control__5, .segmented-control__6, .segmented-control__7, .segmented-control__8, .segmented-control__9 {*/
     width: 6.8rem;
     height: 3.6rem;
     font-size: 1.4rem;
@@ -430,7 +432,8 @@ html {
     color: var(--greyDark);
     transition: all 0.5s ease;
 }
-.segmented-control__1:hover, .segmented-control__2:hover, .segmented-control__3:hover, .segmented-control__4:hover, .segmented-control__5:hover, .segmented-control__6:hover, .segmented-control__7:hover, .segmented-control__8:hover, .segmented-control__9:hover {
+[class^="segmented-control__"]:hover{ /* 아래 반복되는 것을 동일적용 되도록 수식 사용*/
+    /*.segmented-control__1:hover, .segmented-control__2:hover, .segmented-control__3:hover, .segmented-control__4:hover, .segmented-control__5:hover, .segmented-control__6:hover, .segmented-control__7:hover, .segmented-control__8:hover, .segmented-control__9:hover {*/
     color: var(--primary);
 }
 .segmented-control__color {
@@ -483,6 +486,10 @@ html {
 
 #tab-9:checked ~ .segmented-control__color {
     transform: translateX(54.4rem);
+    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+#tab-10:checked ~ .segmented-control__color {
+    transform: translateX(61.2rem);
     transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
