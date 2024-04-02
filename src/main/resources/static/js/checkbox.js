@@ -13,30 +13,43 @@ window.onload = function() {
             hideAllCheckboxes();
             if (document.getElementById('tab-1').checked) {
                 document.getElementById('tab-1Checkbox').style.display = 'block';
+                document.getElementById('tab-10CheckboxOut').style.display = 'block';
             }
             else if (document.getElementById('tab-2').checked) {
                 document.getElementById('tab-2Checkbox').style.display = 'block';
+                document.getElementById('tab-10CheckboxOut').style.display = 'block';
             }
             else if (document.getElementById('tab-3').checked) {
                 document.getElementById('tab-3Checkbox').style.display = 'block';
+                document.getElementById('tab-10CheckboxOut').style.display = 'block';
             }
             else if (document.getElementById('tab-4').checked) {
                 document.getElementById('tab-4Checkbox').style.display = 'block';
+                document.getElementById('tab-10CheckboxOut').style.display = 'block';
             }
             else if (document.getElementById('tab-5').checked) {
                 document.getElementById('tab-5Checkbox').style.display = 'block';
+                document.getElementById('tab-10CheckboxOut').style.display = 'block';
             }
             else if (document.getElementById('tab-6').checked) {
                 document.getElementById('tab-6Checkbox').style.display = 'block';
+                document.getElementById('tab-10CheckboxOut').style.display = 'block';
             }
             else if (document.getElementById('tab-7').checked) {
                 document.getElementById('tab-7Checkbox').style.display = 'block';
+                document.getElementById('tab-10CheckboxOut').style.display = 'block';
             }
             else if (document.getElementById('tab-8').checked) {
                 document.getElementById('tab-8Checkbox').style.display = 'block';
+                document.getElementById('tab-10CheckboxOut').style.display = 'block';
             }
             else if (document.getElementById('tab-9').checked) {
                 document.getElementById('tab-9Checkbox').style.display = 'block';
+                document.getElementById('tab-10CheckboxOut').style.display = 'block';
+            }
+            else if (document.getElementById('tab-10').checked) {
+                document.getElementById('tab-10Checkbox').style.display = 'block';
+                document.getElementById('tab-10CheckboxOut').style.display = 'none';
             }
             // 필요한 경우 여기서 다른 조건들을 추가할 수 있습니다.
         });
