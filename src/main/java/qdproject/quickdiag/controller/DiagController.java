@@ -172,7 +172,7 @@ public class DiagController {
                 }
             }
             allSymptoms.add("증상을 가지고 있는 질병을 알려줘.");
-            allSymptoms2.add("증상일때 어느 과를 가야할까?");
+            allSymptoms2.add("증상일때 어느 과를 가야할지 하나만 말해줘.");
         }
 
         // 다른 부위의 증상도 비슷하게 처리 가능
