@@ -100,5 +100,23 @@ public class UserController {
         return "update";
     }//업데이트 페이지 띄움
 
+    @PostMapping("/user/update")
+    public String updateUser(@ModelAttribute("userDTO") UserDTO userDTO) {
+        userService.updateUser(userDTO);
+        return "redirect:/user/mypage";
+    }
+
+    @GetMapping("/user/delete")
+    public String userDelete(HttpSession session){
+        String loginUserId = (String) session.getAttribute("loginUserId");
+        //세션에서 로그인 정보를 가져옴
+        userService.userDelete(loginUserId);
+        return "redirect:/";
+    }
+//    @GetMapping("/member/delete/{id}")
+//    public String deleteByID(@PathVariable Long id) {
+//        memberService.deleteById(id);
+//        return "redirect:/member/";
+//    }
 
 }
