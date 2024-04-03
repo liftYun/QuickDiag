@@ -23,7 +23,7 @@
         }
 
         /* form 태그 바로 아래의 체크박스를 가로로 정렬하기 위한 컨테이너 */
-        .components1 > form + div {
+        .components1 > form + div + div {
             display: flex;
             flex-wrap: wrap;
             justify-content: flex-start;
@@ -31,7 +31,7 @@
         }
 
         /* 각 체크박스 요소의 스타일 */
-        .components1 > form + div > div {
+        .components1 > form + div + div > div {
             flex: 1 0 22%; /* 가로로 4개씩 정렬되도록 설정 (100% / 4 - 간격 조정) */
             display: flex;
             justify-content: center;
@@ -284,7 +284,7 @@
         <div class="checkbox" id="tab-10Checkbox">
             <a href="/diag/askAI"><button class="btn btn__primary" style="border: 0; margin: 5px">직접 입력하기</button></a>
         </div>
-        <div style="width: 65rem">
+        <div style="width: 65rem;">
             <div id="tab-1Checkbox_1Output" class="checkbox__1" style="display:none; padding: 3px; width: 8rem">
                 <button id="tab-1Checkbox_1Output_1" style="border: 0">
                     <label for="tab-1Checkbox_1Output_1"><i class="material-icons">두통</i></label></button>
