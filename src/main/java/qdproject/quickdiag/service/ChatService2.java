@@ -45,15 +45,16 @@ public class ChatService {
 package qdproject.quickdiag.service;
 
 import org.springframework.stereotype.Service;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 @Service
-public class ChatService {
+public class ChatService2 {
 
     public String runScriptWithInput(String userInput) {
-        ProcessBuilder processBuilder = new ProcessBuilder("node", "src/main/resources/static/js/aiAsk.js", userInput);
+        ProcessBuilder processBuilder = new ProcessBuilder("node", "src/main/resources/static/js/aiAsk2.js", userInput);
         processBuilder.redirectErrorStream(true);
 
         try {
