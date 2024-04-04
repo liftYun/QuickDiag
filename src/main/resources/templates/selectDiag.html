@@ -41,6 +41,9 @@
     </style>
 </head>
 <body>
+<!--<div th:if="${loginUserId != null}">-->
+<!--    -->
+<!--</div>-->
 <div class="container">
     <div class="components1">
         <div class="chip">
@@ -276,13 +279,19 @@
                         <i class="material-icons">마비</i></label>
                 </div>
             </div>
-            <div id="tab-10CheckboxOut">
+            <div id="tab-10CheckboxOut" th:if="${loginUserId != null}">
                 <input type="submit" class="btn btn__primary" style="border: 0; margin: 5px" value="확인">
+            </div>
+            <div id="tab-11CheckboxOut" th:if="${loginUserId == null}">
+                <span><a href="/user/loginError" class="btn btn__primary" style="text-decoration: none; color: white;">확인</a></span>
             </div>
             <!--            <input type="reset" class="btn btn__primary" style="border: 0; margin: 5px" value="취소">-->
         </form>
-        <div class="checkbox" id="tab-10Checkbox">
+        <div class="checkbox" id="tab-10Checkbox" th:if="${loginUserId != null}">
             <a href="/diag/askAI"><button class="btn btn__primary" style="border: 0; margin: 5px">직접 입력하기</button></a>
+        </div>
+        <div class="checkbox" id="tab-11Checkbox" th:if="${loginUserId == null}">
+            <a href="/user/loginError"><button class="btn btn__primary" style="border: 0; margin: 5px">직접 입력하기</button></a>
         </div>
         <div style="width: 65rem;">
             <div id="tab-1Checkbox_1Output" class="checkbox__1" style="display:none; padding: 3px; width: 8rem">
@@ -417,7 +426,7 @@
     </div>
 
 </div>
-</div>
+
 <script th:inline="javascript">
     /*<![CDATA[*/
     var error = [[${error}]];

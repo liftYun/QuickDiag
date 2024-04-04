@@ -1,5 +1,8 @@
 package qdproject.quickdiag.controller;
 
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,9 +14,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import qdproject.quickdiag.service.ChatService;
 import qdproject.quickdiag.service.ChatService2;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @Controller
 @RequiredArgsConstructor
@@ -51,7 +54,7 @@ public class DiagController {
             @RequestParam(value = "waist[]", required = false) String[] waistSymptoms,
             @RequestParam(value = "arm[]", required = false) String[] armSymptoms,
             @RequestParam(value = "leg[]", required = false) String[] legSymptoms,
-            Model model, RedirectAttributes redirectAttributes) {
+            Model model, RedirectAttributes redirectAttributes, HttpServletResponse response) {
 
         // 체크박스에서 선택된 값들은 배열로 받아집니다. 필요한 로직을 구현하세요.
         // 예를 들어, 받은 데이터를 로깅하거나 처리하는 코드를 작성할 수 있습니다.
@@ -181,27 +184,26 @@ public class DiagController {
         String scriptOutput = chatService.runScriptWithInput(String.valueOf(allSymptoms));
         String scriptOutput2 = chatService2.runScriptWithInput(String.valueOf(allSymptoms2));
 
-        /*ArrayList<String> diseaseCategories = extractDiseaseCategories(scriptOutput);
-        System.out.println(diseaseCategories);  질환 종류 추출*/
 
         model.addAttribute("scriptOutput", scriptOutput);
-        model.addAttribute("scriptOutput2", scriptOutput2);
-//        model.addAttribute("diseaseCategories", diseaseCategories);
+//        model.addAttribute("scriptOutput2", scriptOutput2);
+        try {
+            // 한글 문자열을 UTF-8로 URL 인코딩
+            String encodedValue = URLEncoder.encode(scriptOutput2, StandardCharsets.UTF_8.toString());
+
+            // 쿠키 생성
+            Cookie cookie = new Cookie("scriptOutput2", encodedValue);
+            cookie.setPath("/user/map"); // 쿠키가 전송될 경로 설정
+            cookie.setMaxAge(60 * 30); // 쿠키의 유효 시간 설정(예: 1시간)
+
+            // 응답에 쿠키 추가
+            response.addCookie(cookie);
+        } catch (Exception e) {
+            // 인코딩 실패 시 처리
+            e.printStackTrace();
+        }
 
         return "askAI"; // 처리 후 리다이렉트할 페이지의 이름을 반환합니다.
     }
 
-    /*private ArrayList<String> extractDiseaseCategories(String scriptOutput) {
-        ArrayList<String> diseaseCategories = new ArrayList<>();
-        // 정규 표현식을 이용하여 숫자 뒤의 점(.)과 공백 다음으로 오는 문자열을 찾습니다.
-        Pattern pattern = Pattern.compile("\\d+\\.\\s+([가-힣]+\\s[가-힣]+)");
-        Matcher matcher = pattern.matcher(scriptOutput);
-
-        while (matcher.find()) {
-            // 그룹 1에 해당하는 문자열(즉, 감염성 질환, 비감염성 질환 등)을 추출하여 리스트에 추가
-            diseaseCategories.add(matcher.group(1));
-        }
-
-        return diseaseCategories;
-    }*/
 }
