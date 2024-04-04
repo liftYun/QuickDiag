@@ -16,7 +16,6 @@ import qdproject.quickdiag.service.UserService;
 @RequiredArgsConstructor
 public class UserController {
 
-
     private final UserService userService;
 
     @GetMapping("/user/selectDiag")
@@ -111,6 +110,7 @@ public class UserController {
         String loginUserId = (String) session.getAttribute("loginUserId");
         //세션에서 로그인 정보를 가져옴
         userService.userDelete(loginUserId);
+        session.invalidate();
         return "redirect:/";
     }
 //    @GetMapping("/member/delete/{id}")

@@ -5,9 +5,12 @@ function initMap() {
     // 로딩 화면을 표시합니다.
     showLoadingScreen();
 
+
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 12 // 초기 확대 수준 설정
     });
+
+
 
     // 사용자의 현재 위치를 가져옵니다.
     if (navigator.geolocation) {
@@ -20,11 +23,20 @@ function initMap() {
             // 지도의 중심을 사용자의 위치로 설정합니다.
             map.setCenter(pos);
 
+            function getValueFromHiddenInput() {
+                // hidden input 요소에서 값 가져오기
+                var scriptOutput2Value = document.getElementById('scriptOutput2').value;
+                console.log("scriptOutput2 값: " + scriptOutput2Value);
+
+                // 이 값을 사용하여 원하는 작업 수행
+                // 예를 들어, 가져온 값으로 다른 처리를 할 수 있습니다.
+            }
+
             // 정형외과를 검색합니다.
             const request = {
                 location: pos,
                 radius: '5000', // 5km 반경 내에서 검색합니다.
-                query: '정형외과'
+                query: scriptOutput2Value
             };
 
             const service = new google.maps.places.PlacesService(map);
