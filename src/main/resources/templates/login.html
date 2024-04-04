@@ -6,11 +6,26 @@
     <title>로그인</title>
     <link rel="stylesheet" href="/css/loginStyles.css">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script>
+        window.onload = function() {
+            const btn = document.querySelector('.btn__primary');
+            const originalText = btn.innerText;
+            const newText = "Let's Go"; // 마우스를 올렸을 때 보여질 새로운 텍스트
+
+            btn.addEventListener('mouseover', function() {
+                btn.innerText = newText;
+            });
+
+            btn.addEventListener('mouseout', function() {
+                btn.innerText = originalText;
+            });
+        }
+    </script>
 </head>
 <body>
 <br><br><br>
 <div class="container-lg">
-    <div class="container-lg d-flex justify-content-center align-items-center">
+    <div class="container-lg-d-flex">
         <div class="col-lg-4">
             <div class="card">
 
@@ -18,17 +33,17 @@
                     <form action="/user/login" method="POST">
 
                         <div class="form-group">
-                            <label for="id">아이디</label>
+                            <label for="id">ID</label>
                             <input type="text" class="form form__input" id="user_id" name="user_id" pattern="[a-zA-Z0-9]{8,20}" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="password">비밀번호</label>
+                            <label  for="password">Password</label>
                             <input type="password" class="form form__input" id="user_password" name="user_password" pattern="^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&_=~|\\/?:;.])[a-zA-Z0-9!@#$%^&_=~|\\/?:;.]{8,20}$" required>
                         </div>
 
                         <div class="centered-content">
-                            <button type="submit" class="btn btn__primary">로그인</button>
+                            <button type="submit" class="btn btn__primary">Sign In</button>
                         </div>
 
                     </form>

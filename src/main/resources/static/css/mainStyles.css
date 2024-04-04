@@ -36,19 +36,6 @@ html {
     background: var(--greyLight-1);
 }
 
-/*.components {
-    width: 75rem;
-    height: 40rem;
-    border-radius: 3rem;
-    box-shadow: 0.8rem 0.8rem 1.4rem var(--greyLight-2), -0.2rem -0.2rem 1.8rem var(--white);
-    padding: 4rem;
-    display: grid;
-    grid-template-columns: 17.6rem 19rem 20.4rem;
-    grid-template-rows: repeat(auto-fill, min-content);
-    grid-column-gap: 5rem;
-    grid-row-gap: 2.5rem;
-    align-items: center;
-}*/
 .components {
     width: 112.5rem;
     height: 60rem;
@@ -58,7 +45,7 @@ html {
     display: grid;
     grid-template-columns: 1fr; /* 1열로 고정 */
     grid-auto-rows: min-content; /* 각 행의 높이가 그 행의 내용에 따라 자동으로 결정됨 */
-    grid-gap: 2.5rem; /* 행과 열 사이의 간격 */
+    grid-gap: 2rem; /* 행과 열 사이의 간격 */
     justify-items: center; /* 모든 아이템들을 가로 방향으로 중앙에 정렬 */
     align-items: center; /* 모든 아이템들을 세로 방향으로 중앙에 정렬 */
     justify-content: center; /* 그리드 자체를 가로 방향으로 중앙에 정렬 */
@@ -240,9 +227,9 @@ html {
 
 /*  BUTTONS  */
 .btn {
-    width: 15rem;
-    height: 4rem;
-    border-radius: 1rem;
+    width: 19rem;
+    height: 5rem;
+    border-radius: 1.25rem;
     box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
     justify-self: center;
     display: flex;
@@ -257,9 +244,10 @@ html {
     background: var(--primary);
     box-shadow: inset 0.2rem 0.2rem 1rem var(--primary-light), inset -0.2rem -0.2rem 1rem var(--primary-dark), 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
     color: var(--greyLight-1);
+    font-size: 1.9rem;
 }
 .btn__primary:hover {
-    color: var(--white);
+    transform: scale(1.05); /* 버튼 크기를 약간 키움 */
 }
 .btn__primary:active {
     box-shadow: inset 0.2rem 0.2rem 1rem var(--primary-dark), inset -0.2rem -0.2rem 1rem var(--primary-light);
@@ -283,16 +271,20 @@ html {
 /*  CHIP  */
 .chip {
     position: fixed; /* 위치를 고정 */
-    top: 0; /* 상단에서 0의 위치에 */
-    left: 50%; /* 왼쪽에서 50% 위치에 (가운데 정렬을 위해) */
-    transform: translateX(-50%); /* X축 기준으로 -50% 이동하여 정확한 중앙 정렬 */
-    width: 34rem;
-    height: 8rem;
+    top: 20%; /* 상단에서 50% 위치에 */
+    left: 50%; /* 왼쪽에서 50% 위치에 */
+    transform: translate(-50%, -50%); /* 가운데 정렬을 위해 X축과 Y축 모두를 -50% 이동 */
+    max-width: 90%; /* 최대 너비 설정 */
+    max-height: 90%; /* 최대 높이 설정 */
+    width: auto; /* 가로 크기 자동 조정 */
+    min-width: 650px;
+    height: auto; /* 세로 크기 자동 조정 */
     border-radius: 1rem;
     box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column; /* 내부 요소들을 세로로 배치 */
+    justify-content: center; /* 수직 가운데 정렬 */
+    align-items: center; /* 수평 가운데 정렬 */
     z-index: 1000; /* 다른 요소들 위에 보이도록 z-index 설정 */
 }
 .chip__icon {
@@ -608,4 +600,25 @@ html {
     right: 2rem;
     bottom: 1rem;
     color: #EA4C89;
+}
+.header {
+    text-align: center;
+    color: #6d5dfc;
+    padding: 5%;
+    animation: textGrowShrink 3s infinite alternate;
+}
+body, html {
+    min-width: 50%;
+    min-height: 50%;
+}
+.message {
+    font-size: 26px;
+    text-align: center; /* 가운데 정렬 */
+    padding: 3%;
+    min-width: 650px;
+}
+@keyframes textGrowShrink {
+    0% { font-size: 35px; } /* 시작 크기 */
+    50% { font-size: 36px; } /* 중간 크기 */
+    100% { font-size: 35px; } /* 최종 크기 */
 }
