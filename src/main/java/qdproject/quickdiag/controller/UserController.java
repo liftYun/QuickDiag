@@ -26,6 +26,12 @@ public class UserController {
         return "login";
     } //로그인으로 이동
 
+    @GetMapping("/user/loginError")
+    public String loginError(RedirectAttributes redirectAttributes){
+        redirectAttributes.addFlashAttribute("error", "로그인이 필요한 서비스입니다.");
+        return "redirect:/user/login";
+    }
+
     @PostMapping("/user/login")
     public String login(@ModelAttribute UserDTO userDTO, HttpSession session) {
         UserDTO loginResult = userService.login(userDTO);
