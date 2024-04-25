@@ -22,21 +22,18 @@
             position: relative;
         }
 
-        /* form 태그 바로 아래의 체크박스를 가로로 정렬하기 위한 컨테이너 */
-        .components1 > form + div + div {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-            gap: 2.5rem; /* 각 요소 사이의 간격 */
+        form{
+            display: grid;
+            grid-template-rows: repeat(2, auto);
         }
 
-        /* 각 체크박스 요소의 스타일 */
-        .components1 > form + div + div > div {
-            flex: 1 0 22%; /* 가로로 4개씩 정렬되도록 설정 (100% / 4 - 간격 조정) */
-            display: flex;
+        /* form 태그 바로 아래의 체크박스를 가로로 정렬하기 위한 컨테이너 */
+        /*.components1 > form + div + div {
+            display: grid;
+            grid-template-columns: repeat(4, 20rem);
+            !*grid-gap: 3rem;*!
             justify-content: center;
-            align-items: center;
-        }
+        }*/
 
     </style>
 </head>
@@ -173,14 +170,14 @@
                         <i class="material-icons">내부통증</i></label>
                 </div>
                 <div class="checkbox__1">
-                    <input id="tab-4Checkbox_3" type="checkbox" name="chest[]" value="숨쉬기 어려움">
+                    <input id="tab-4Checkbox_3" type="checkbox" name="chest[]" value="호흡곤란">
                     <label for="tab-4Checkbox_3">
-                        <i class="material-icons">숨쉬기 어려움</i></label>
+                        <i class="material-icons">호흡곤란</i></label>
                 </div>
                 <div class="checkbox__1">
-                    <input id="tab-4Checkbox_4" type="checkbox" name="chest[]" value="과한 심박수">
+                    <input id="tab-4Checkbox_4" type="checkbox" name="chest[]" value="부정맥">
                     <label for="tab-4Checkbox_4">
-                        <i class="material-icons">과한 심박수</i></label>
+                        <i class="material-icons">부정맥</i></label>
                 </div>
             </div>
 
@@ -280,10 +277,10 @@
                 </div>
             </div>
             <div id="tab-10CheckboxOut" th:if="${loginUserId != null}">
-                <input type="submit" class="btn btn__primary" style="border: 0; margin: 5px" value="확인">
+                <input type="submit" class="btn btn__primary" style="border: 0; margin-left: 10.5rem; margin-right: 10.5rem;" value="확인">
             </div>
             <div id="tab-11CheckboxOut" th:if="${loginUserId == null}">
-                <span><a href="/user/loginError" class="btn btn__primary" style="text-decoration: none; color: white;">확인</a></span>
+                <span><a href="/user/loginError" class="btn btn__primary" style="text-decoration: none; color: white; margin-left: 10.5rem; margin-right: 10.5rem;">확인</a></span>
             </div>
             <!--            <input type="reset" class="btn btn__primary" style="border: 0; margin: 5px" value="취소">-->
         </form>
@@ -293,7 +290,7 @@
         <div class="checkbox" id="tab-11Checkbox" th:if="${loginUserId == null}">
             <a href="/user/loginError"><button class="btn btn__primary" style="border: 0; margin: 5px">직접 입력하기</button></a>
         </div>
-        <div style="width: 65rem;">
+        <div style="display: grid; grid-template-columns: repeat(4, 17rem); justify-content: center; overflow: scroll" >
             <div id="tab-1Checkbox_1Output" class="checkbox__1" style="display:none; padding: 3px; width: 8rem">
                 <button id="tab-1Checkbox_1Output_1" style="border: 0">
                     <label for="tab-1Checkbox_1Output_1"><i class="material-icons">두통</i></label></button>
