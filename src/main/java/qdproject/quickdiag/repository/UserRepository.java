@@ -3,7 +3,6 @@ package qdproject.quickdiag.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import qdproject.quickdiag.dto.UserDTO;
 import qdproject.quickdiag.entity.UserEntity;
 
 import java.util.Optional;
