@@ -292,7 +292,7 @@ html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 1000; /* 다른 요소들 위에 보이도록 z-index 설정 */
+    /*z-index: 1000; !* 다른 요소들 위에 보이도록 z-index 설정 *!*/
 }
 .chip__icon {
     width: 3rem;
