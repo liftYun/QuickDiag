@@ -669,4 +669,13 @@ html {
     right: 2rem;
     bottom: 1rem;
     color: #EA4C89;
-}z
+}
+.card-mid{
+    font-size: 20px;
+}
+.form-group-check{
+    font-size: 18px;
+}
+.form-group-button{
+    padding-top: 20px;
+}

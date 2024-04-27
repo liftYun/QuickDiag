@@ -9,38 +9,35 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 <body>
-
         <div class="box">
             <div class="card">
                 <div class="card-header">
-                    마이페이지
+                    MyPage
                 </div>
                 <div class="card-body">
                     <form class="formclass" action="/user/mypage" method="POST">
-
-
                         <div class="mb-3">
-                            <label for="user_id" class="form-label">ID</label><br>
+                            <label for="user_id" class="form-label">ID</label>
                             <input type="text" class="form form__input" id="user_id" name="user_id" th:value="${mypageUser.user_id}" disabled>
                         </div>
 
                         <div class="mb-3">
-                            <label for="user_name" class="form-label">이름</label><br>
+                            <label for="user_name" class="form-label">이름</label>
                             <input type="text" class="form form__input" id="user_name" name="user_name"  th:value="${mypageUser.user_name}" disabled>
                         </div>
 
                         <div class="mb-3">
-                            <label for="user_phoneNumber" class="form-label">전화번호</label><br>
+                            <label for="user_phoneNumber" class="form-label">전화번호</label>
                             <input type="tel" class="form form__input" id="user_phoneNumber" name="user_phoneNumber"  th:value="${mypageUser.user_phoneNumber}" disabled>
                         </div>
 
                         <div class="mb-3">
-                            <label for="user_birthday" class="form-label">생년월일</label><br>
+                            <label for="user_birthday" class="form-label">생년월일</label>
                             <input type="text" class="form form__input" id="user_birthday" name="user_birthday" th:value="${mypageUser.getUser_birthday()}" disabled>
                         </div>
 
                         <div class="mb-3">
-                            <label for="user_gender" class="form-label">성별</label><br>
+                            <label for="user_gender" class="form-label">성별</label>
                             <input type="text" class="form form__input" id="user_gender" name="user_gender" th:value="${mypageUser.getUser_gender()}" disabled>
                         </div>
 
