@@ -16,8 +16,8 @@ spring:
     #    mysql에 생성한 사용자 계정 정보를 써야 합니다.
 #    username: root
 #    password: 12345678
-#    username: qdroot
-#    password: qdroot
+    username: qdroot
+    password: qdroot
   thymeleaf:
     cache: false
 
