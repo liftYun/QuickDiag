@@ -43,17 +43,15 @@ html {
     box-shadow: 0.8rem 0.8rem 1.4rem var(--greyLight-2), -0.2rem -0.2rem 1.8rem var(--white);
     padding: 4rem;
     display: grid;
-    grid-template-columns: 1fr; /* 1열로 고정 */
-    grid-auto-rows: min-content; /* 각 행의 높이가 그 행의 내용에 따라 자동으로 결정됨 */
-    grid-gap: 2rem; /* 행과 열 사이의 간격 */
-    justify-items: center; /* 모든 아이템들을 가로 방향으로 중앙에 정렬 */
-    align-items: center; /* 모든 아이템들을 세로 방향으로 중앙에 정렬 */
-    justify-content: center; /* 그리드 자체를 가로 방향으로 중앙에 정렬 */
-    align-content: center; /* 그리드 자체를 세로 방향으로 중앙에 정렬 */
+    grid-template-columns: 1fr; /* One fixed column */
+    grid-auto-rows: min-content; /* Row height adjusts based on content */
+    grid-gap: 1.6rem; /* Decrease gap between rows and columns */
+    justify-items: center; /* Align items horizontally at the center */
+    align-items: center; /* Align items vertically at the center */
+    justify-content: center; /* Center the grid horizontally */
+    align-content: center; /* Center the grid vertically */
     position: relative;
 }
-
-
 
 /*  SWITCH  */
 .switch {
@@ -614,7 +612,6 @@ body, html {
 .message {
     font-size: 26px;
     text-align: center; /* 가운데 정렬 */
-    padding: 3%;
     min-width: 650px;
 }
 @keyframes textGrowShrink {

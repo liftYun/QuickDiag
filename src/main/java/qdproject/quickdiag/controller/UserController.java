@@ -3,11 +3,13 @@ package qdproject.quickdiag.controller;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import qdproject.quickdiag.dto.UserDTO;
+import qdproject.quickdiag.service.DataService;
 import qdproject.quickdiag.service.UserService;
 
 
@@ -17,6 +19,7 @@ import qdproject.quickdiag.service.UserService;
 public class UserController {
 
     private final UserService userService;
+    private  final DataService dataService;
 
     @GetMapping("/user/selectDiag")
     public String selectDiagForm(HttpSession session, Model model){
@@ -123,10 +126,15 @@ public class UserController {
         session.invalidate();
         return "redirect:/";
     }
-//    @GetMapping("/member/delete/{id}")
-//    public String deleteByID(@PathVariable Long id) {
-//        memberService.deleteById(id);
-//        return "redirect:/member/";
-//    }
 
+    @GetMapping("/user/checkUserData") //main에서 selectDiag로 이동 시 userData입력여부 확인
+    public ResponseEntity<String> checkUserData(HttpSession session) {
+        String sessionId = (String) session.getAttribute("loginUserId");
+
+        if (dataService.isDataPresent(sessionId)) {
+            return ResponseEntity.ok("Data exists");
+        } else {
+            return ResponseEntity.badRequest().body("사용자 추가 정보를 입력해 주세요");
+        }
+    }
 }
