@@ -8,7 +8,6 @@ import qdproject.quickdiag.repository.DataRepository;
 
 import java.util.Optional;
 
-
 @Service
 @RequiredArgsConstructor
 public class DataService {
