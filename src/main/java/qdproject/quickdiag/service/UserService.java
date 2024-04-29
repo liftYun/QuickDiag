@@ -44,6 +44,7 @@ public class UserService {
 
         //로그인 로직 구현
         Optional<UserEntity> byUserId = userRepository.findById(userDTO.getUser_id());
+        System.out.println("UserService" + userDTO.getUser_id());
         if(byUserId.isPresent()) {
             UserEntity userEntity = byUserId.get();
 
@@ -107,4 +108,6 @@ public class UserService {
         userRepository.deleteById(userId);
         System.out.println("사용자 삭제 완료: " + userId);
     }
+
+
 }

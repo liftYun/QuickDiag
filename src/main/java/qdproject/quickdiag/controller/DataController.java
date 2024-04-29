@@ -28,7 +28,7 @@ public class DataController {
     @PostMapping("/user/userData")
     public String insertUserData(@ModelAttribute DataDTO dataDTO){
         dataService.save(dataDTO);
-        return "main";
+        return "redirect:/";
     }
 
 }
