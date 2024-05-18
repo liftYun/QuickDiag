@@ -27,20 +27,21 @@
             grid-template-rows: repeat(2, auto);
         }
 
-        /* form 태그 바로 아래의 체크박스를 가로로 정렬하기 위한 컨테이너 */
-        /*.components1 > form + div + div {
-            display: grid;
-            grid-template-columns: repeat(4, 20rem);
-            !*grid-gap: 3rem;*!
-            justify-content: center;
-        }*/
-
     </style>
 </head>
 <body>
-<!--<div th:if="${loginUserId != null}">-->
-<!--    -->
-<!--</div>-->
+
+<div id="chatbotContainer" class="chatbot-container">
+    <div id="chatbotHeader" class="chatbot-header">
+        <button id="chatbotToggle" class="chatbot-toggle-btn">챗봇 열기</button>
+    </div>
+    <div id="chatbotBody" class="chatbot-body"></div>
+    <div id="chatInputContainer" class="chat-input-container">
+        <input type="text" id="chatInput" class="chat-input" placeholder="메시지를 입력하세요...">
+        <button onclick="sendMessage()" class="send-btn">전송</button>
+    </div>
+</div>
+
 <div class="chip">
     <div class="chip__icon">
         <ion-icon name="fitness-outline"></ion-icon>
@@ -106,11 +107,7 @@
                     <label for="tab-1Checkbox_2">
                         <i class="material-icons">발열</i></label>
                 </div>
-                <!--<div class="checkbox__3">
-                    <input id="tab-1Checkbox_3" type="checkbox" name="head[]" value="빈혈">
-                    <label for="tab-1Checkbox_3">
-                        <i class="material-icons">빈혈</i></label>
-                </div>-->
+
             </div>
 
             <div class="checkbox" id="tab-2Checkbox">
@@ -129,11 +126,7 @@
                     <label for="tab-2Checkbox_3">
                         <i class="material-icons">시야 문제</i></label>
                 </div>
-                <!--<div class="checkbox__4">
-                    <input id="tab-2Checkbox_4" type="checkbox" name="eye[]" value="멍울">
-                    <label for="tab-2Checkbox_4">
-                        <i class="material-icons">멍울</i></label>
-                </div>-->
+
             </div>
 
             <div class="checkbox" id="tab-3Checkbox">
@@ -147,16 +140,7 @@
                     <label for="tab-3Checkbox_2">
                         <i class="material-icons">재채기</i></label>
                 </div>
-                <!--<div class="checkbox__1">
-                    <input id="tab-3Checkbox_3" type="checkbox" name="nose[]" value="가동범위제한">
-                    <label for="tab-3Checkbox_3">
-                        <i class="material-icons">가동범위제한</i></label>
-                </div>
-                <div class="checkbox__1">
-                    <input id="tab-3Checkbox_4" type="checkbox" name="nose[]" value="소리">
-                    <label for="tab-3Checkbox_4">
-                        <i class="material-icons">소리</i></label>
-                </div>-->
+
             </div>
 
             <div class="checkbox" id="tab-4Checkbox">
@@ -170,16 +154,7 @@
                     <label for="tab-4Checkbox_2">
                         <i class="material-icons">갈증</i></label>
                 </div>
-                <!--<div class="checkbox__1">
-                    <input id="tab-4Checkbox_3" type="checkbox" name="mouse[]" value="호흡곤란">
-                    <label for="tab-4Checkbox_3">
-                        <i class="material-icons">호흡곤란</i></label>
-                </div>
-                <div class="checkbox__1">
-                    <input id="tab-4Checkbox_4" type="checkbox" name="mouse[]" value="부정맥">
-                    <label for="tab-4Checkbox_4">
-                        <i class="material-icons">부정맥</i></label>
-                </div>-->
+
             </div>
 
             <div class="checkbox" id="tab-5Checkbox">
@@ -198,16 +173,7 @@
                     <label for="tab-5Checkbox_3">
                         <i class="material-icons">귀 분비물</i></label>
                 </div>
-                <!--<div class="checkbox__1">
-                    <input id="tab-5Checkbox_4" type="checkbox" name="ear[]" value="가스">
-                    <label for="tab-5Checkbox_4">
-                        <i class="material-icons">가스</i></label>
-                </div>
-                <div class="checkbox__1">
-                    <input id="tab-5Checkbox_5" type="checkbox" name="ear[]" value="팽창">
-                    <label for="tab-5Checkbox_5">
-                        <i class="material-icons">팽창</i></label>
-                </div>-->
+
             </div>
             <div class="checkbox" id="tab-6Checkbox">
                 <div class="checkbox__1">
@@ -220,11 +186,7 @@
                     <label for="tab-6Checkbox_2">
                         <i class="material-icons">목 분비물 및 이물감</i></label>
                 </div>
-                <!--                <div class="checkbox__1">
-                                    <input id="tab-6Checkbox_3" type="checkbox" name="neck[]" value="멍울">
-                                    <label for="tab-6Checkbox_3">
-                                        <i class="material-icons">멍울</i></label>
-                                </div>-->
+
             </div>
             <div class="checkbox" id="tab-7Checkbox">
                 <div class="checkbox__1">
@@ -305,10 +267,7 @@
                 <button id="tab-1Checkbox_2Output_1" style="border: 0">
                     <label for="tab-1Checkbox_2Output_1"><i class="material-icons">발열</i></label></button>
             </div>
-            <!--<div id="tab-1Checkbox_3Output" class="checkbox__1" style="display:none; padding: 3px; width: 8rem">
-                <button id="tab-1Checkbox_3Output_1" style="border: 0">
-                    <label for="tab-1Checkbox_3Output_1"><i class="material-icons">빈혈</i></label></button>
-            </div>-->
+
             <div id="tab-2Checkbox_1Output" class="checkbox__1" style="display:none; padding: 3px; width: 8rem">
                 <button id="tab-2Checkbox_1Output_1" style="border: 0">
                     <label for="tab-2Checkbox_1Output_1"><i class="material-icons">눈 통증</i></label></button>
@@ -321,10 +280,7 @@
                 <button id="tab-2Checkbox_3Output_1" style="border: 0">
                     <label for="tab-2Checkbox_3Output_1"><i class="material-icons">시야 문제</i></label></button>
             </div>
-            <!--<div id="tab-2Checkbox_4Output" class="checkbox__1" style="display:none; padding: 3px; width: 8rem">
-                <button id="tab-2Checkbox_4Output_1" style="border: 0">
-                    <label for="tab-2Checkbox_4Output_1"><i class="material-icons">(목)멍울</i></label></button>
-            </div>-->
+
             <div id="tab-3Checkbox_1Output" class="checkbox__1" style="display:none; padding: 3px; width: 8rem">
                 <button id="tab-3Checkbox_1Output_1" style="border: 0">
                     <label for="tab-3Checkbox_1Output_1"><i class="material-icons">코 막힘 및 콧물</i></label></button>
@@ -333,14 +289,7 @@
                 <button id="tab-3Checkbox_2Output_1" style="border: 0">
                     <label for="tab-3Checkbox_2Output_1"><i class="material-icons">재채기</i></label></button>
             </div>
-            <!--<div id="tab-3Checkbox_3Output" class="checkbox__1" style="display:none; padding: 3px; width: 8rem">
-                <button id="tab-3Checkbox_3Output_1" style="border: 0">
-                    <label for="tab-3Checkbox_3Output_1"><i class="material-icons">(어깨)가동범위제한</i></label></button>
-            </div>
-            <div id="tab-3Checkbox_4Output" class="checkbox__1" style="display:none; padding: 3px; width: 8rem">
-                <button id="tab-3Checkbox_4Output_1" style="border: 0">
-                    <label for="tab-3Checkbox_4Output_1"><i class="material-icons">(어깨)소리</i></label></button>
-            </div>-->
+
             <div id="tab-4Checkbox_1Output" class="checkbox__1" style="display:none; padding: 3px; width: 8rem">
                 <button id="tab-4Checkbox_1Output_1" style="border: 0">
                     <label for="tab-4Checkbox_1Output_1"><i class="material-icons">구토 및 구역질</i></label></button>
@@ -349,14 +298,7 @@
                 <button id="tab-4Checkbox_2Output_1" style="border: 0">
                     <label for="tab-4Checkbox_2Output_1"><i class="material-icons">갈증</i></label></button>
             </div>
-            <!--<div id="tab-4Checkbox_3Output" class="checkbox__1" style="display:none; padding: 3px; width: 8rem">
-                <button id="tab-4Checkbox_3Output_1" style="border: 0">
-                    <label for="tab-4Checkbox_3Output_1"><i class="material-icons">(가슴)숨쉬기 어려움</i></label></button>
-            </div>
-            <div id="tab-4Checkbox_4Output" class="checkbox__1" style="display:none; padding: 3px; width: 8rem">
-                <button id="tab-4Checkbox_4Output_1" style="border: 0">
-                    <label for="tab-4Checkbox_4Output_1"><i class="material-icons">(가슴)과한 심박수</i></label></button>
-            </div>-->
+
             <div id="tab-5Checkbox_1Output" class="checkbox__1" style="display:none; padding: 3px; width: 8rem">
                 <button id="tab-5Checkbox_1Output_1" style="border: 0">
                     <label for="tab-5Checkbox_1Output_1"><i class="material-icons">귀 통증</i></label></button>
@@ -369,14 +311,7 @@
                 <button id="tab-5Checkbox_3Output_1" style="border: 0">
                     <label for="tab-5Checkbox_3Output_1"><i class="material-icons">귀 분비물</i></label></button>
             </div>
-            <!--<div id="tab-5Checkbox_4Output" class="checkbox__1" style="display:none; padding: 3px; width: 8rem">
-                <button id="tab-5Checkbox_4Output_1" style="border: 0">
-                    <label for="tab-5Checkbox_4Output_1"><i class="material-icons">(배)가스</i></label></button>
-            </div>
-            <div id="tab-5Checkbox_5Output" class="checkbox__1" style="display:none; padding: 3px; width: 8rem">
-                <button id="tab-5Checkbox_5Output_1" style="border: 0">
-                    <label for="tab-5Checkbox_5Output_1"><i class="material-icons">(배)팽창</i></label></button>
-            </div>-->
+
             <div id="tab-6Checkbox_1Output" class="checkbox__1" style="display:none; padding: 3px; width: 8rem">
                 <button id="tab-6Checkbox_1Output_1" style="border: 0">
                     <label for="tab-6Checkbox_1Output_1"><i class="material-icons">목 통증</i></label></button>
@@ -385,10 +320,7 @@
                 <button id="tab-6Checkbox_2Output_1" style="border: 0">
                     <label for="tab-6Checkbox_2Output_1"><i class="material-icons">목 분비물 및 이물감</i></label></button>
             </div>
-            <!--<div id="tab-6Checkbox_3Output" class="checkbox__1" style="display:none; padding: 3px; width: 8rem">
-                <button id="tab-6Checkbox_3Output_1" style="border: 0">
-                    <label for="tab-6Checkbox_3Output_1"><i class="material-icons">(엉덩이)멍울</i></label></button>
-            </div>-->
+
             <div id="tab-7Checkbox_1Output" class="checkbox__1" style="display:none; padding: 3px; width: 8rem">
                 <button id="tab-7Checkbox_1Output_1" style="border: 0">
                     <label for="tab-7Checkbox_1Output_1"><i class="material-icons">가슴통증</i></label></button>
