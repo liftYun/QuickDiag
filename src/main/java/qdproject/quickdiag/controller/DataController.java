@@ -31,4 +31,21 @@ public class DataController {
         return "redirect:/";
     }
 
+    @GetMapping("/user/checkUserSelectedData")
+    public String checkUserSelectedData(HttpSession session, Model model){
+        System.out.println("사용자 설문데이터 조회 시작");
+        String loginUserId = (String) session.getAttribute("loginUserId");
+        //세션에서 로그인 정보 가져옴.
+        DataDTO dataDTO =  dataService.getCheckUserSelectedData(loginUserId);
+        System.out.println("반환받은 컨트롤러" + dataDTO);
+        System.out.println("사용자 설문데이터 조회 종료");
+        model.addAttribute("checkUserSelectedData", dataDTO);
+        return "checkUserSelectedData";
+    }
+
+    @GetMapping("/user/userData/redirect")
+    public String redirectUserData(){
+        return "redirect:/user/userData";
+    }
+
 }

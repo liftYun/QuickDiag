@@ -13,7 +13,6 @@ import qdproject.quickdiag.service.DataService;
 import qdproject.quickdiag.service.UserService;
 
 
-
 @Controller
 @RequiredArgsConstructor
 public class UserController {
@@ -137,4 +136,6 @@ public class UserController {
             return ResponseEntity.badRequest().body("사용자 추가 정보를 입력해 주세요");
         }
     }
+
+
 }

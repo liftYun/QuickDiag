@@ -51,14 +51,16 @@
     justify-content: center; /* 내부 요소들을 수평으로 가운데로 정렬 */
     width: 100%; /* 부모 요소의 너비를 100%로 설정 */
 }
-.buttonclass{
+.buttonclass {
     display: flex;
+    flex-direction: column; /* 내부 요소들을 수직 방향으로 배치 */
     justify-content: center; /* 내부 요소를 수평으로 가운데로 정렬 */
     align-items: center; /* 내부 요소를 수직으로 가운데로 정렬 */
     width: 100%;
     padding-top: 20px;
     padding-bottom: 20px;
 }
+
 .buttonclass a {
     margin: 0 5px; /* 버튼 사이의 간격 조절 */
 }
@@ -66,7 +68,6 @@
     padding-top: 10px;
     padding-bottom: 10px;
 }
-
 
 
 
