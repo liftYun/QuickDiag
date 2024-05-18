@@ -43,7 +43,7 @@ public class DiagController {
         return "askAI";  // 결과를 보여줄 Thymeleaf 템플릿 이름
     }
 
-    @PostMapping("/diag/askAI")
+    /*@PostMapping("/diag/askAI")
     public String receiveSymptoms(
             @RequestParam(value = "head[]", required = false) String[] headSymptoms,
             @RequestParam(value = "neck[]", required = false) String[] neckSymptoms,
@@ -205,5 +205,5 @@ public class DiagController {
 
         return "askAI"; // 처리 후 리다이렉트할 페이지의 이름을 반환합니다.
     }
-
+*/
 }
