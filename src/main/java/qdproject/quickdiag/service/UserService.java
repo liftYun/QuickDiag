@@ -5,6 +5,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 import qdproject.quickdiag.dto.UserDTO;
 import qdproject.quickdiag.entity.UserEntity;
+import qdproject.quickdiag.repository.DataRepository;
 import qdproject.quickdiag.repository.UserRepository;
 
 import java.util.Optional;
@@ -14,6 +15,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
+    private final DataRepository dataRepository;
 
     public void save(UserDTO userDTO) {
 
@@ -108,6 +110,7 @@ public class UserService {
         userRepository.deleteById(userId);
         System.out.println("사용자 삭제 완료: " + userId);
     }
+
 
 
 }

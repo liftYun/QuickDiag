@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>main</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/userDataStyles.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+<br><br><br>
+<div class="container-lg"> <!-- 넓은 그리드 컨테이너로 변경 -->
+    <div class="container-lg d-flex justify-content-center align-items-center">
+        <div class="col-lg-8 d-flex justify-content-center"> <!-- 중대형(large) 디바이스에서 8개의 그리드 컬럼 차지 -->
+            <div class="card d-flex justify-content-center align-items-center"><br>
+                <div class="card-header">
+                    건강 문진표
+                </div>
+                <br>
+                <div class="card-mid">
+                    정확한 진단을 위한 건강자료를 입력해주세요.
+                </div>
+                <br>
+                <div class="card-body">
+                    <form class="formclass" action="/user/userData" method="POST">
+
+                        <div class="form-group-check">
+                            <input type="hidden" name="user_id" th:value="${user_id}">
+                        </div>
+                        <br>
+
+                        <div class="form-group-check">
+                            <label>질환력(과거 이력, 가족력)을 모두 선택해 주세요.</label><br>
+                            <input type="checkbox" id="disease_1" name="user_family" value="뇌졸증(중풍)" th:checked="${#lists.contains(checkUserSelectedData.user_family?.split(','), '뇌졸증(중풍)')}"> 뇌졸증(중풍)<br>
+                            <input type="checkbox" id="disease_2" name="user_family" value="심근경색/협심증" th:checked="${#lists.contains(checkUserSelectedData.user_family?.split(','), '심근경색/협심증')}"> 심근경색/협심증<br>
+                            <input type="checkbox" id="disease_3" name="user_family" value="고혈압" th:checked="${#lists.contains(checkUserSelectedData.user_family?.split(','), '고혈압')}"> 고혈압<br>
+                            <input type="checkbox" id="disease_4" name="user_family" value="당뇨병" th:checked="${#lists.contains(checkUserSelectedData.user_family?.split(','), '당뇨병')}"> 당뇨병<br>
+                            <input type="checkbox" id="disease_5" name="user_family" value="이상지질혈증" th:checked="${#lists.contains(checkUserSelectedData.user_family?.split(','), '이상지질혈증')}"> 이상지질혈증<br>
+                            <input type="checkbox" id="disease_6" name="user_family" value="폐결핵" th:checked="${#lists.contains(checkUserSelectedData.user_family?.split(','), '폐결핵')}"> 폐결핵<br>
+                        </div>
+
+                        <br>
+
+                        <div class="form-group">
+                            <label for="smoking">평소 흡연(궐련형담배) 습관을 입력해주세요</label><br>
+                            <select class="form form__input_gender" id="user_smoking" name="user_smoking" required>
+                                <option value="피우지 않음" th:selected="${checkUserSelectedData.user_smoking == '피우지 않음'}">피우지 않음</option>
+                                <option value="하루 1~2개피" th:selected="${checkUserSelectedData.user_smoking == '하루 1~2개피'}">하루 1~2개피</option>
+                                <option value="하루 반갑 정도" th:selected="${checkUserSelectedData.user_smoking == '하루 반갑 정도'}">하루 반갑 정도</option>
+                                <option value="하루 한갑 정도" th:selected="${checkUserSelectedData.user_smoking == '하루 한갑 정도'}">하루 한갑 정도</option>
+                                <option value="하루 한갑 이상" th:selected="${checkUserSelectedData.user_smoking == '하루 한갑 이상'}">하루 한갑 이상</option>
+                            </select>
+                        </div>
+
+                        <br>
+
+                        <div class="form-group">
+                            <label for="smoking">평소 흡연(궐련형전자담배) 습관을 입력해주세요</label><br>
+                            <select class="form form__input_gender" id="user_esmoking" name="user_esmoking" required>
+                                <option value="피우지 않음" th:selected="${checkUserSelectedData.user_esmoking == '피우지 않음'}">피우지 않음</option>
+                                <option value="하루 1~2개피" th:selected="${checkUserSelectedData.user_esmoking == '하루 1~2개피'}">하루 1~2개피</option>
+                                <option value="하루 반갑 정도" th:selected="${checkUserSelectedData.user_esmoking == '하루 반갑 정도'}">하루 반갑 정도</option>
+                                <option value="하루 한갑 정도" th:selected="${checkUserSelectedData.user_esmoking == '하루 한갑 정도'}">하루 한갑 정도</option>
+                                <option value="하루 한갑 이상" th:selected="${checkUserSelectedData.user_esmoking == '하루 한갑 이상'}">하루 한갑 이상</option>
+                            </select>
+                        </div>
+                        <br>
+
+                        <div class="form-group">
+                            <label for="drinking">평소 음주 습관을 입력해주세요.</label><br>
+                            <select class="form form__input_gender" id="user_drinking" name="user_drinking" required>
+                                <option value="술을 마시지 않음" th:selected="${checkUserSelectedData.user_drinking == '술을 마시지 않음'}">술을 마시지 않음</option>
+                                <option value="일년에 1~2번" th:selected="${checkUserSelectedData.user_drinking == '일년에 1~2번'}">일년에 1~2번</option>
+                                <option value="6개월에 1~2번" th:selected="${checkUserSelectedData.user_drinking == '6개월에 1~2번'}">6개월에 1~2번</option>
+                                <option value="3달에 1~2번" th:selected="${checkUserSelectedData.user_drinking == '3달에 1~2번'}">3달에 1~2번</option>
+                                <option value="달에 1~2번" th:selected="${checkUserSelectedData.user_drinking == '달에 1~2번'}">1달에 1~2번</option>
+                                <option value="1주일에 1~2번" th:selected="${checkUserSelectedData.user_drinking == '1주일에 1~2번'}">1주일에 1~2번</option>
+                                <option value="1주일에 3번 이상" th:selected="${checkUserSelectedData.user_drinking == '1주일에 3번 이상'}">1주일에 3번 이상</option>
+                            </select>
+                        </div>
+
+                        <br>
+
+                        <div class="form-group">
+                            <label for="workout">숨이 찰 정도의 신체활동(운동)</label><br>
+                            <select class="form form__input_gender" id="user_workout" name="user_workout" required>
+                                <option value="운동을 하지 않음" th:selected="${checkUserSelectedData.user_workout == '운동을 하지 않음'}">운동을 하지 않음</option>
+                                <option value="월 1~2회 이상" th:selected="${checkUserSelectedData.user_workout == '월 1~2회 이상'}">월 1~2회 이상</option>
+                                <option value="주 1~2회 이상" th:selected="${checkUserSelectedData.user_workout == '주 1~2회 이상'}">주 1~2회 이상</option>
+                                <option value="주 3회 이상" th:selected="${checkUserSelectedData.user_workout == '주 3회 이상'}">주 3회 이상</option>
+                            </select>
+                        </div>
+
+                        <br>
+                        <div class="form-group-check">
+                            <label>분석을 위한 개인정보 이용에 동의(필수)</label><br>
+                            <input type="checkbox" id="user_agree" name="user_agree" value="개인정보이용동의완료" th:checked="${checkUserSelectedData.user_agree == '개인정보이용동의완료'}">개인정보이용동의<br>
+
+                        </div>
+                        <br>
+
+                        <div class="form-group-button d-flex justify-content-center"> <!-- 수정된 부분 -->
+                            <a href="/user/userData/redirect" class="btn btn__primary">설문 변경하기</a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="/js/checkUserSelectedDataScripts.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+
+</html>

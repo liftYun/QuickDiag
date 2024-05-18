@@ -3,9 +3,7 @@ package qdproject.quickdiag.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import qdproject.quickdiag.dto.DataDTO;
-import qdproject.quickdiag.dto.UserDTO;
 import qdproject.quickdiag.entity.DataEntity;
-import qdproject.quickdiag.entity.UserEntity;
 import qdproject.quickdiag.repository.DataRepository;
 
 import java.util.Optional;
@@ -32,6 +30,19 @@ public class DataService {
         //아이디에 해당하는 정보를 데이터베이스에서 Entuty타입으로 가져옴
         if(optionalDataEntity.isPresent()){
             return DataDTO.toDataDTO(optionalDataEntity.get());
+            // 엔티티에 있는 정보를 dto 타입으로 바꾼 뒤 서비스로 반환
+        }
+        else{
+            return null;
+        }
+    }
+
+    public DataDTO getCheckUserSelectedData(String loginUserId) {
+        Optional<DataEntity> optionalDataEntity2 = dataRepository.findById(loginUserId);
+        //아이디에 해당하는 정보를 데이터베이스에서 Entity타입으로 가져옴
+        if(optionalDataEntity2.isPresent()){
+            System.out.println("서비스의 경우" + DataDTO.toDataDTO(optionalDataEntity2.get()));
+            return DataDTO.toDataDTO(optionalDataEntity2.get());
             // 엔티티에 있는 정보를 dto 타입으로 바꾼 뒤 서비스로 반환
         }
         else{
