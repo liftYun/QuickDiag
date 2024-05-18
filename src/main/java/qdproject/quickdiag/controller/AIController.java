@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import qdproject.quickdiag.dto.DataDTO;
 import qdproject.quickdiag.dto.UserDTO;
 import qdproject.quickdiag.service.ChatService;
+import qdproject.quickdiag.service.ChatService2;
 import qdproject.quickdiag.service.DataService;
 import qdproject.quickdiag.service.UserService;
 
@@ -29,6 +30,8 @@ public class AIController {
 
     @Autowired
     private ChatService chatService;
+    @Autowired
+    private ChatService2 chatService2;
     private final UserService userService;
     private final DataService dataService;
 
@@ -138,6 +141,11 @@ public class AIController {
 //            String scriptOutput = chatService.runScriptWithInput(String.valueOf(predictionsNode));
             String scriptOutput = chatService.runScriptWithInput(ask);
             model.addAttribute("scriptOutput",scriptOutput);
+
+            String ask2 = scriptOutput + "1순위 질병은 어느 과를 가야할까?";
+            System.out.println(ask2);
+            String scriptOutput2 = chatService2.runScriptWithInput(ask2);
+            model.addAttribute("scriptOutput2",scriptOutput2);
 
         } catch (Exception e) {
             e.printStackTrace();
