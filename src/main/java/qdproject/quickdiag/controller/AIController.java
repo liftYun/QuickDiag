@@ -144,7 +144,7 @@ public class AIController {
         }
 
         // 이동할 View의 이름을 반환
-        return "test2";
+        return "askAI";
     }
 
 }
