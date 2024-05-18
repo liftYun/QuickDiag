@@ -3,59 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>update</title>
+    <title>마이페이지</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="registerStyles.css"> <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="/css/mypageStyles.css"> <!-- Link to the external CSS file -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 <body>
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header bg-success text-white text-center">
-                    마이페이지
+<div class="box">
+    <div class="card">
+        <div class="card-header">
+            Update
+        </div>
+        <div class="card-body">
+            <form class="formclass" action="/user/update" method="POST">
+                <div class="mb-3">
+                    <label for="user_id" class="form-label">ID</label>
+                    <input type="text" class="form form__input" id="user_id" name="user_id" th:value="${mypageUser.user_id}" readonly>
                 </div>
-                <div class="card-body">
-                    <form action="/user/update" method="POST">
 
-                        <div class="mb-3">
-                            <label for="user_id" class="form-label">ID</label>
-                            <input type="text" class="form-control" id="user_id" name="user_id" th:value="${mypageUser.user_id}" readonly>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="user_name" class="form-label">이름</label>
-                            <input type="text" class="form-control" id="user_name" name="user_name"  th:value="${mypageUser.user_name}" >
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="user_phoneNumber" class="form-label">전화번호</label>
-                            <input type="tel" class="form-control" id="user_phoneNumber" name="user_phoneNumber"  th:value="${mypageUser.user_phoneNumber}" >
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="user_birthday" class="form-label">생년월일</label>
-                            <input type="text" class="form-control" id="user_birthday" name="user_birthday" th:value="${mypageUser.getUser_birthday()}" >
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="user_gender" class="form-label">성별</label>
-                            <input type="text" class="form-control" id="user_gender" name="user_gender" th:value="${mypageUser.getUser_gender()}" >
-                        </div>
-
-                        <div class="text-center">
-                            <input type="submit"  class="btn bg-success text-white" value="수정">
-                        </div>
-
-                    </form>
+                <div class="mb-3">
+                    <label for="user_name" class="form-label">이름</label>
+                    <input type="text" class="form form__input" id="user_name" name="user_name"  th:value="${mypageUser.user_name}" >
                 </div>
-            </div>
+
+                <div class="mb-3">
+                    <label for="user_phoneNumber" class="form-label">전화번호</label>
+                    <input type="tel" class="form form__input" id="user_phoneNumber" name="user_phoneNumber"  th:value="${mypageUser.user_phoneNumber}" >
+                </div>
+
+                <div class="mb-3">
+                    <label for="user_birthday" class="form-label">생년월일</label>
+                    <input type="text" class="form form__input" id="user_birthday" name="user_birthday" th:value="${mypageUser.getUser_birthday()}" >
+                </div>
+
+                <div class="mb-3">
+                    <label for="user_gender" class="form-label">성별</label>
+                    <input type="text" class="form form__input" id="user_gender" name="user_gender" th:value="${mypageUser.getUser_gender()}" >
+                </div>
+
+                <div class="buttonclass">
+                    <input type="submit" class="btn btn__primary" value="수정">
+                </div>
+
+            </form>
         </div>
     </div>
 </div>
 
+
+<script type="text/javascript" src="/js/registerScripts.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -2,6 +2,9 @@ let map;
 const infoWindows = [];
 
 function initMap() {
+    // 로딩 화면을 표시합니다.
+    showLoadingScreen();
+
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 12 // 초기 확대 수준 설정
     });
@@ -17,11 +20,17 @@ function initMap() {
             // 지도의 중심을 사용자의 위치로 설정합니다.
             map.setCenter(pos);
 
+            // 쿠키에서 검색 키워드를 가져옵니다.
+            const searchKeyword = decodeURIComponent(getCookieValue('scriptOutput2'));
+
+            // 검색 키워드가 없을 경우, 기본값으로 '정형외과'를 사용합니다.
+            const query = searchKeyword || '정형외과';
+
             // 정형외과를 검색합니다.
             const request = {
                 location: pos,
                 radius: '5000', // 5km 반경 내에서 검색합니다.
-                query: '정형외과'
+                query: query
             };
 
             const service = new google.maps.places.PlacesService(map);
@@ -34,13 +43,22 @@ function initMap() {
                         addToList(result);
                     });
                 }
+
+                // 로딩 화면을 숨깁니다.
+                hideLoadingScreen();
             });
         }, function() {
             handleLocationError(true, map.getCenter());
+
+            // 로딩 화면을 숨깁니다.
+            hideLoadingScreen();
         });
     } else {
         // 브라우저가 Geolocation을 지원하지 않을 경우
         handleLocationError(false, map.getCenter());
+
+        // 로딩 화면을 숨깁니다.
+        hideLoadingScreen();
     }
 }
 
@@ -100,4 +118,29 @@ function addToList(place) {
         infoWindows.push(infowindow);
     });
     hospitalList.appendChild(listItem);
+}
+
+// 지도 로딩이 완료되면 로딩 화면을 숨깁니다.
+google.maps.event.addDomListener(window, 'load', function() {
+    var loadingScreen = document.getElementById('loading-screen');
+    loadingScreen.style.display = 'none';
+});
+// 로딩 화면을 보여주는 함수
+function showLoadingScreen() {
+    document.getElementById('loading-screen').style.display = 'block';
+}
+
+// 로딩 화면을 숨기는 함수
+function hideLoadingScreen() {
+    document.getElementById('loading-screen').style.display = 'none';
+}
+
+function getCookieValue(dataFromCookie) {
+    let cookieValue = document.cookie
+        .split('; ')
+        .find(row => row.startsWith(dataFromCookie + '='));
+    if (cookieValue) {
+        return cookieValue.split('=')[1];
+    }
+    return ''; // 쿠키가 없을 경우 빈 문자열 반환
 }

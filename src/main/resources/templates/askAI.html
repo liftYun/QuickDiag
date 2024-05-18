@@ -26,9 +26,14 @@
                 <label>
                     <textarea class="form__input" style="width: 500px; height: 300px; resize: none; margin-right: 350px;" name="scriptOutput" id="scriptOutput" readonly th:text="*{scriptOutput}"></textarea>
                 </label>
-                <button type="submit" class="btn btn__primary" style="align-items: center; position: absolute; bottom: 0; left: 180%; transform: translateX(-50%);">질문하기</button>
+                <button type="submit" class="btn btn__primary" style="align-items: center; position: absolute; bottom: 0; left: 68%; transform: translateX(-50%); border: 0">질문하기</button>
             </form>
         </div>
+        <!--<form action="/user/map" method="get">
+            <input type="hidden" name="scriptOutput2" id="scriptOutput2" th:value="*{scriptOutput2}">
+            <button type="submit" class="btn btn__primary" style="align-items: center; position: absolute; bottom: 0; left: 280%; transform: translateX(-50%);">병원찾기</button>
+        </form>-->
+        <a href="/user/map" class="btn btn__primary" style="text-decoration: none; color: white;">병원찾기</a>
     </div>
 </div>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

@@ -1,0 +1,681 @@
+body {
+    background-color: #E4EBF5	; /* Set the background color to black */
+    color: white; /* Change text color to white for better readability */
+    display: flex;
+
+}
+html, body {
+    height: 100%;
+}
+.card {
+    border: none; /* 카드의 테두리 제거 */
+    width: 80%;
+    min-width: 600px;
+
+}
+.card-header {
+    background-color: #ffffff;
+    font-size: 30px;
+    border: none; /* 카드의 테두리 제거 */
+    color: #6d5dfc;
+    font-weight: bold;
+}
+.form-group {
+    margin-bottom: 20px; /* 폼 그룹 사이에 약간의 마진 추가 */
+}
+label {
+    font-size: 18px; /* 라벨 글자 크기 조정 */
+}
+.card-body{
+    background-color: #FFFFFF;
+    width: 90%; /* 또는 다른 넓이 값을 지정 */
+}
+label{
+    padding-bottom: 10px;
+    font-weight: bold;
+
+}
+.form-text{
+    font-size: 13px;
+    padding-top: 10px;
+}
+.formclass{
+    margin: 15px;
+}
+.col-lg-8{
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+:root {
+    --primary-light: #8abdff;
+    --primary: #6d5dfc;
+    --primary-dark: #5b0eeb;
+    --white: #FFFFFF;
+    --greyLight-1: #E4EBF5;
+    --greyLight-2: #c8d0e7;
+    --greyLight-3: #bec8e4;
+    --greyDark: #9baacf;
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    overflow-y: scroll;
+    background: var(--greyLight-1);
+}
+@media screen and (min-width: 900px) {
+    html {
+        font-size: 75%;
+    }
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+    background: var(--greyLight-1);
+}
+
+/*.components {
+    width: 75rem;
+    height: 40rem;
+    border-radius: 3rem;
+    box-shadow: 0.8rem 0.8rem 1.4rem var(--greyLight-2), -0.2rem -0.2rem 1.8rem var(--white);
+    padding: 4rem;
+    display: grid;
+    grid-template-columns: 17.6rem 19rem 20.4rem;
+    grid-template-rows: repeat(auto-fill, min-content);
+    grid-column-gap: 5rem;
+    grid-row-gap: 2.5rem;
+    align-items: center;
+}*/
+.components {
+    width: 112.5rem;
+    height: 60rem;
+    border-radius: 3rem;
+    box-shadow: 0.8rem 0.8rem 1.4rem var(--greyLight-2), -0.2rem -0.2rem 1.8rem var(--white);
+    padding: 4rem;
+    display: grid;
+    grid-template-columns: 1fr; /* 1열로 고정 */
+    grid-auto-rows: min-content; /* 각 행의 높이가 그 행의 내용에 따라 자동으로 결정됨 */
+    grid-gap: 2.5rem; /* 행과 열 사이의 간격 */
+    justify-items: center; /* 모든 아이템들을 가로 방향으로 중앙에 정렬 */
+    align-items: center; /* 모든 아이템들을 세로 방향으로 중앙에 정렬 */
+    justify-content: center; /* 그리드 자체를 가로 방향으로 중앙에 정렬 */
+    align-content: center; /* 그리드 자체를 세로 방향으로 중앙에 정렬 */
+    position: relative;
+}
+
+
+
+/*  SWITCH  */
+.switch {
+    grid-column: 1/2;
+    display: grid;
+    grid-template-columns: repeat(2, min-content);
+    grid-gap: 3rem;
+    justify-self: center;
+}
+.switch input {
+    display: none;
+}
+.switch__1, .switch__2 {
+    width: 6rem;
+}
+.switch__1 label, .switch__2 label {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 3rem;
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+    background: rgba(255, 255, 255, 0);
+    position: relative;
+    cursor: pointer;
+    border-radius: 1.6rem;
+}
+.switch__1 label::after, .switch__2 label::after {
+    content: "";
+    position: absolute;
+    left: 0.4rem;
+    width: 2.1rem;
+    height: 2.1rem;
+    border-radius: 50%;
+    background: var(--greyDark);
+    transition: all 0.4s ease;
+}
+.switch__1 label::before, .switch__2 label::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(330deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+.switch input:checked ~ label::before {
+    opacity: 1;
+}
+.switch input:checked ~ label::after {
+    left: 57%;
+    background: var(--greyLight-1);
+}
+
+/*  CHECKBOX  */
+.checkbox {
+    grid-column: 1/2;
+    display: grid;
+    grid-template-columns: repeat(2, 6rem);
+    grid-gap: 3rem;
+    justify-content: center;
+}
+.checkbox input {
+    display: none;
+}
+[class^="checkbox__"] {
+    /* width: 6rem;
+     display: flex;
+     justify-content: center;
+     padding: 10px;*/
+    display: inline-block; /* 혹은 다른 수평 정렬 속성 사용 */
+    width: auto; /* 필요에 따라 너비 조정 */
+    padding: 10px;
+
+}
+[class^="checkbox__"] label {
+    /* box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+     cursor: pointer;
+     position: relative;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     border-radius: 0.5rem;
+     width: 2.8rem;
+     height: 2.8rem;*/
+    /* 기존 스타일 */
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+    cursor: pointer;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--greyDark);
+    transition: 0.3s ease;
+    /* 수정된 스타일 */
+    display: inline-block; /* 라벨을 인라인 블록으로 설정하여 텍스트 크기에 따라 가변적으로 조정 */
+    padding: 10px; /* 원하는 여백 조정 */
+    min-width: 2.8rem; /* 최소 너비를 글자 크기에 따라 자동 조정 */
+    white-space: nowrap; /* 텍스트가 길어지더라도 한 줄로 유지되도록 설정 */
+
+}
+[class^="checkbox__"] label:hover i {
+    color: var(--primary);
+}
+[class^="checkbox__"] label i {
+    /*font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--greyDark);
+    transition: 0.3s ease;*/
+    /*font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--greyDark);
+    transition: 0.3s ease;
+    writing-mode: horizontal-tb; !* 가로로 텍스트를 늘림 *!
+    white-space: nowrap; !* 줄 바꿈을 방지하여 가로로 계속 표시 *!*/
+    font-style: normal; /* 기울어진 스타일을 일반 스타일로 변경 */
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--greyDark);
+    transition: 0.3s ease;
+    writing-mode: horizontal-tb; /* 가로로 텍스트를 늘림 */
+    white-space: nowrap; /* 줄 바꿈을 방지하여 가로로 계속 표시 */
+}
+[class^="checkbox__"] input:checked ~ label {
+    box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+}
+[class^="checkbox__"] input:checked ~ label i {
+    color: var(--primary);
+}
+
+/*  RADIO  */
+.radio {
+    grid-column: 1/2;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+}
+.radio input {
+    display: none;
+}
+.radio__1 input:checked ~ label, .radio__2 input:checked ~ label {
+    box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+}
+.radio__1 input:checked ~ label::after, .radio__2 input:checked ~ label::after {
+    background: var(--primary);
+}
+.radio__1 label, .radio__2 label {
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+}
+.radio__1 label:hover::after, .radio__2 label:hover::after {
+    background: var(--primary);
+}
+.radio__1 label::after, .radio__2 label::after {
+    content: "";
+    position: absolute;
+    width: 1.4rem;
+    height: 1.4rem;
+    background: var(--greyDark);
+    border-radius: 50%;
+    transition: 0.3s ease;
+}
+
+/*  BUTTONS  */
+.btn {
+    width: 30rem;
+    height: 4rem;
+    border-radius: 1rem;
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-size: 20px;
+}
+.btn__primary {
+    grid-column: 1/2;
+    grid-row: 4/5;
+    background: var(--primary);
+    box-shadow: inset 0.2rem 0.2rem 1rem var(--primary-light), inset -0.2rem -0.2rem 1rem var(--primary-dark), 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+    color: var(--greyLight-1);
+}
+.btn__primary:hover {
+    transform: scale(1.03); /* 버튼 크기를 약간 키움 */
+}
+.btn__primary:active {
+    box-shadow: inset 0.2rem 0.2rem 1rem var(--primary-dark), inset -0.2rem -0.2rem 1rem var(--primary-light);
+}
+.btn__secondary {
+    grid-column: 1/2;
+    grid-row: 5/6;
+    color: var(--greyDark);
+}
+.btn__secondary:hover {
+    color: var(--primary);
+}
+.btn__secondary:active {
+    box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+}
+.btn p {
+    font-size: 1.6rem;
+}
+
+
+/*  CHIP  */
+.chip {
+    position: fixed; /* 위치를 고정 */
+    top: 0; /* 상단에서 0의 위치에 */
+    left: 50%; /* 왼쪽에서 50% 위치에 (가운데 정렬을 위해) */
+    transform: translateX(-50%); /* X축 기준으로 -50% 이동하여 정확한 중앙 정렬 */
+    width: 34rem;
+    height: 8rem;
+    border-radius: 1rem;
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000; /* 다른 요소들 위에 보이도록 z-index 설정 */
+}
+.chip__icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1rem;
+    margin: 0 0 0 0.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    color: var(--primary);
+}
+.chip p {
+    font-size: 0.9rem;
+    margin-left: -1.8rem;
+    color: var(--greyDark);
+}
+.chip__close {
+    width: 1.6rem;
+    height: 1.6rem;
+    margin: 0 0.5rem;
+    display: flex;
+    font-size: 1.6rem;
+    color: var(--greyLight-3);
+    cursor: pointer;
+}
+
+/*  FORM  */
+.form {
+    grid-column: 3/4;
+    grid-row: 3/4;
+    padding: 14px;
+}
+.form__input {
+    width: 100%;
+    height: 3rem;
+    border: none;
+    border-radius: 0.7rem;
+    font-size: 1.4rem;
+    padding-left: 1.4rem;
+    box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+    background: none;
+    font-family: inherit;
+    color: var(--greyDark);
+}
+.form__input::placeholder {
+    color: var(--greyLight-3);
+}
+.form__input:focus {
+    outline: none;
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+}
+
+.form__input_gender{
+    width: 100%;
+    height: 4rem;
+    border: none;
+    border-radius: 1rem;
+    font-size: 1.4rem;
+    padding-left: 1.4rem;
+    box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+    background: none;
+    font-family: inherit;
+    color: var(--greyDark);
+}
+
+/*  SEARCH  */
+.search {
+    grid-column: 3/4;
+    grid-row: 2/3;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.search__input {
+    width: 20.4rem;
+    height: 4rem;
+    border: none;
+    border-radius: 1rem;
+    font-size: 1.4rem;
+    padding-left: 3.8rem;
+    box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+    background: none;
+    font-family: inherit;
+    color: var(--greyDark);
+}
+.search__input::placeholder {
+    color: var(--greyLight-3);
+}
+.search__input:focus {
+    outline: none;
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+}
+.search__input:focus + .search__icon {
+    color: var(--primary);
+}
+.search__icon {
+    height: 2rem;
+    position: absolute;
+    font-size: 2rem;
+    padding: 0 1rem;
+    display: flex;
+    color: var(--greyDark);
+    transition: 0.3s ease;
+}
+
+/*  SEGMENTED-CONTROL */
+/*.segmented-control {
+    grid-column: 3/4;
+    grid-row: 1/2;
+    width: 61.2rem;
+    height: 4rem;
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+}*/
+.segmented-control {
+
+    width: 61.2rem;
+    height: 4rem;
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0; /* 상단에 고정 */
+    left: 50%; /* 가로 중앙 정렬을 위해 */
+    transform: translateX(-50%); /* 정확한 가로 중앙 정렬을 위해 */
+}
+
+.segmented-control input {
+    display: none;
+}
+.segmented-control > input:checked + label {
+    transition: all 0.5s ease;
+    color: var(--primary);
+}
+.segmented-control__1, .segmented-control__2, .segmented-control__3, .segmented-control__4, .segmented-control__5, .segmented-control__6, .segmented-control__7, .segmented-control__8, .segmented-control__9 {
+    width: 6.8rem;
+    height: 3.6rem;
+    font-size: 1.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: var(--greyDark);
+    transition: all 0.5s ease;
+}
+.segmented-control__1:hover, .segmented-control__2:hover, .segmented-control__3:hover, .segmented-control__4:hover, .segmented-control__5:hover, .segmented-control__6:hover, .segmented-control__7:hover, .segmented-control__8:hover, .segmented-control__9:hover {
+    color: var(--primary);
+}
+.segmented-control__color {
+    position: absolute;
+    height: 3.4rem;
+    width: 6.2rem;
+    margin-left: 0.3rem;
+    border-radius: 0.8rem;
+    box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+    pointer-events: none;
+}
+
+#tab-1:checked ~ .segmented-control__color {
+    transform: translateX(0);
+    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+#tab-2:checked ~ .segmented-control__color {
+    transform: translateX(6.8rem);
+    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+#tab-3:checked ~ .segmented-control__color {
+    transform: translateX(13.6rem);
+    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+#tab-4:checked ~ .segmented-control__color {
+    transform: translateX(20.4rem);
+    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+#tab-5:checked ~ .segmented-control__color {
+    transform: translateX(27.2rem);
+    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+#tab-6:checked ~ .segmented-control__color {
+    transform: translateX(34rem);
+    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+#tab-7:checked ~ .segmented-control__color {
+    transform: translateX(40.8rem);
+    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+#tab-8:checked ~ .segmented-control__color {
+    transform: translateX(47.6rem);
+    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+#tab-9:checked ~ .segmented-control__color {
+    transform: translateX(54.4rem);
+    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+/*  ICONS  */
+.icon {
+    grid-column: 3/4;
+    grid-row: 4/5;
+    display: flex;
+    justify-content: space-between;
+}
+.icon__account, .icon__home, .icon__settings {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--greyDark);
+    transition: all 0.5s ease;
+}
+.icon__account:active, .icon__home:active, .icon__settings:active {
+    box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+    color: var(--primary);
+}
+.icon__account:hover, .icon__home:hover, .icon__settings:hover {
+    color: var(--primary);
+}
+
+/*  RANGE-SLIDER  */
+.slider {
+    grid-column: 3/4;
+    grid-row: 5/6;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+}
+.slider__box {
+    width: 100%;
+    height: 1rem;
+    cursor: pointer;
+    box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+    border-radius: 1rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.slider__btn {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--white);
+    position: absolute;
+    box-shadow: 0 0.1rem 0.3rem 0 var(--greyLight-3);
+    z-index: 200;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+}
+.slider__btn:hover ~ .slider__tooltip {
+    opacity: 1;
+}
+.slider__btn::after {
+    content: "";
+    position: absolute;
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+}
+.slider__color {
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    left: 0;
+    z-index: 100;
+    border-radius: inherit;
+    background: var(--primary);
+    background: linear-gradient(-1deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
+}
+.slider__tooltip {
+    position: absolute;
+    top: 2.6rem;
+    height: 2.5rem;
+    width: 3rem;
+    border-radius: 0.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: var(--primary);
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+@keyframes waves {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+.dribbble {
+    position: fixed;
+    font-size: 2.6rem;
+    right: 2rem;
+    bottom: 1rem;
+    color: #EA4C89;
+}
+.card-mid{
+    font-size: 20px;
+}
+.form-group-check{
+    font-size: 18px;
+}
+.form-group-button{
+    padding-top: 20px;
+}

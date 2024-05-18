@@ -8,7 +8,7 @@ const {
 } = require("@google/generative-ai");
 
 const MODEL_NAME = "gemini-1.0-pro-001";
-const API_KEY = "###"; //개인 API 사용필요.
+const API_KEY = "AIzaSyDjjJn_37Y6NuthLBX-VSXWQHqNpUFGYyw"; //개인 API 사용필요.
 
 async function runChat(userInput) {
     const genAI = new GoogleGenerativeAI(API_KEY);
@@ -114,7 +114,7 @@ async function runChat(userInput) {
                 "* 대장 폴립\n" +
                 "* 대장암\n" +
                 "\n" +
-                "* 기타 원인\n" +
+                "**기타 원인**\n" +
                 "* 음식 알레르기\n" +
                 "* 약물 부작용\n" +
                 "* 스트레스\n" +
@@ -134,7 +134,7 @@ async function runChat(userInput) {
                 "* 신경 압박\n" +
                 "* 척수병증\n" +
                 "\n" +
-                "3. 기타 원인\n" +
+                "**기타 원인**\n" +
                 "* 외상\n" +
                 "* 과도한 사용\n" +
                 "* 자세 불량\n" +

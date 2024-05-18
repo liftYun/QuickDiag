@@ -3,11 +3,13 @@ package qdproject.quickdiag.controller;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import qdproject.quickdiag.dto.UserDTO;
+import qdproject.quickdiag.service.DataService;
 import qdproject.quickdiag.service.UserService;
 
 
@@ -16,16 +18,26 @@ import qdproject.quickdiag.service.UserService;
 @RequiredArgsConstructor
 public class UserController {
 
-
     private final UserService userService;
+    private final DataService dataService;
 
     @GetMapping("/user/selectDiag")
-    public String selectDiagForm(){ return "selectDiag"; }
+    public String selectDiagForm(HttpSession session, Model model){
+        String loginUserId = (String) session.getAttribute("loginUserId");
+        model.addAttribute("loginUserId",loginUserId);
+        return "selectDiag";
+    }
 
     @GetMapping("/user/login")
     public String loginForm() {
         return "login";
     } //로그인으로 이동
+
+    @GetMapping("/user/loginError")
+    public String loginError(RedirectAttributes redirectAttributes){
+        redirectAttributes.addFlashAttribute("error", "로그인이 필요한 서비스입니다.");
+        return "redirect:/user/login";
+    }
 
     @PostMapping("/user/login")
     public String login(@ModelAttribute UserDTO userDTO, HttpSession session) {
@@ -100,5 +112,29 @@ public class UserController {
         return "update";
     }//업데이트 페이지 띄움
 
+    @PostMapping("/user/update")
+    public String updateUser(@ModelAttribute("userDTO") UserDTO userDTO) {
+        userService.updateUser(userDTO);
+        return "redirect:/user/mypage";
+    }
 
+    @GetMapping("/user/delete")
+    public String userDelete(HttpSession session){
+        String loginUserId = (String) session.getAttribute("loginUserId");
+        //세션에서 로그인 정보를 가져옴
+        userService.userDelete(loginUserId);
+        session.invalidate();
+        return "redirect:/";
+    }
+
+    @GetMapping("/user/checkUserData") //main에서 selectDiag로 이동 시 userData입력여부 확인
+    public ResponseEntity<String> checkUserData(HttpSession session) {
+        String sessionId = (String) session.getAttribute("loginUserId");
+
+        if (dataService.isDataPresent(sessionId)) {
+            return ResponseEntity.ok("Data exists");
+        } else {
+            return ResponseEntity.badRequest().body("사용자 추가 정보를 입력해 주세요");
+        }
+    }
 }
