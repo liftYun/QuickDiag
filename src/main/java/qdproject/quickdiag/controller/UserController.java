@@ -19,7 +19,7 @@ import qdproject.quickdiag.service.UserService;
 public class UserController {
 
     private final UserService userService;
-    private  final DataService dataService;
+    private final DataService dataService;
 
     @GetMapping("/user/selectDiag")
     public String selectDiagForm(HttpSession session, Model model){

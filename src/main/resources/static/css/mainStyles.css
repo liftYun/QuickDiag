@@ -613,6 +613,7 @@ body, html {
     font-size: 26px;
     text-align: center; /* 가운데 정렬 */
     min-width: 650px;
+    margin-top: 15px;
 }
 @keyframes textGrowShrink {
     0% { font-size: 35px; } /* 시작 크기 */
