@@ -11,6 +11,7 @@ vectorizer = joblib.load("tfidf_vectorizer.joblib")
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
+        print("pythonStart")
         # JSON 형식으로 증상 데이터를 받기
         data = request.get_json(force=True)
         user_input = data.get('symptoms', '')
