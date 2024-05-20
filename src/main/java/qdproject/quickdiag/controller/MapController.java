@@ -36,4 +36,9 @@ public class MapController {
             return new ModelAndView("errorPage");
         }
     }
+
+    @GetMapping("/user/map/test")
+    public String maptest(){
+        return "maptest";
+    }
 }
