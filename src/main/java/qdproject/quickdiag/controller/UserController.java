@@ -20,6 +20,11 @@ public class UserController {
     private final UserService userService;
     private final DataService dataService;
 
+    @GetMapping("/test2")
+    public String test2(){
+        return "test2";
+    }
+
     @GetMapping("/user/selectDiag")
     public String selectDiagForm(HttpSession session, Model model){
         String loginUserId = (String) session.getAttribute("loginUserId");

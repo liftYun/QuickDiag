@@ -23,6 +23,17 @@ import qdproject.quickdiag.service.ChatService2;
 import qdproject.quickdiag.service.DataService;
 import qdproject.quickdiag.service.UserService;
 
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletResponse;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 
 @Controller
 @RequiredArgsConstructor
@@ -45,7 +56,7 @@ public class AIController {
                                             @RequestParam(value = "chest[]", required = false) String[] chestArray,
                                             @RequestParam(value = "gas[]", required = false) String[] gasArray,
                                             @RequestParam(value = "etc[]", required = false) String[] etcArray,
-                                            HttpSession session, Model model, RedirectAttributes redirectAttributes) {
+                                            HttpSession session, Model model, RedirectAttributes redirectAttributes,  HttpServletResponse response) {
         // Flask 서버의 URL 설정
         String flaskUrl = "http://localhost:8000/predict";
         System.out.println("api요청시작");
@@ -54,58 +65,68 @@ public class AIController {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         //증상을 받아와서 하나의 String으로 재처리
-        String userInput = "";
+        List<String> symptoms = new ArrayList<>();
         if(headArray == null && eyeArray == null && noseArray == null && mouseArray == null && earArray == null
                 && neckArray == null && chestArray == null && gasArray == null && etcArray == null) {
             redirectAttributes.addFlashAttribute("error", "적어도 하나의 증상을 선택해야 합니다.");
             return "redirect:/user/selectDiag";
         } else {
             if(headArray != null){
-                for(int i = 0; headArray.length >= i; i++){
+                symptoms.addAll(Arrays.asList(headArray));
+                /*for(int i = 0; headArray.length >= i; i++){
                     userInput = String.join(",",headArray);
-                }
+                }*/
             }
             if(eyeArray != null){
-                for(int i = 0; eyeArray.length >= i; i++){
+                symptoms.addAll(Arrays.asList(eyeArray));
+                /*for(int i = 0; eyeArray.length >= i; i++){
                     userInput = String.join(",",eyeArray);
-                }
+                }*/
             }
             if(noseArray != null){
-                for(int i = 0; noseArray.length >= i; i++){
+                symptoms.addAll(Arrays.asList(noseArray));
+                /*for(int i = 0; noseArray.length >= i; i++){
                     userInput = String.join(",",noseArray);
-                }
+                }*/
             }
             if(mouseArray != null){
-                for(int i = 0; mouseArray.length >= i; i++){
+                symptoms.addAll(Arrays.asList(mouseArray));
+                /*for(int i = 0; mouseArray.length >= i; i++){
                     userInput = String.join(",",mouseArray);
-                }
+                }*/
             }
             if(earArray != null){
-                for(int i = 0; earArray.length >= i; i++){
+                symptoms.addAll(Arrays.asList(earArray));
+                /*for(int i = 0; earArray.length >= i; i++){
                     userInput = String.join(",",earArray);
-                }
+                }*/
             }
             if(neckArray != null){
-                for(int i = 0; neckArray.length >= i; i++){
+                symptoms.addAll(Arrays.asList(neckArray));
+                /*for(int i = 0; neckArray.length >= i; i++){
                     userInput = String.join(",",neckArray);
-                }
+                }*/
             }
             if(chestArray != null){
-                for(int i = 0; chestArray.length >= i; i++){
+                symptoms.addAll(Arrays.asList(chestArray));
+                /*for(int i = 0; chestArray.length >= i; i++){
                     userInput = String.join(",",chestArray);
-                }
+                }*/
             }
             if(gasArray != null){
-                for(int i = 0; gasArray.length >= i; i++){
+                symptoms.addAll(Arrays.asList(gasArray));
+                /*for(int i = 0; gasArray.length >= i; i++){
                     userInput = String.join(",",gasArray);
-                }
+                }*/
             }
             if(etcArray != null){
-                for(int i = 0; etcArray.length >= i; i++){
+                symptoms.addAll(Arrays.asList(etcArray));
+                /*for(int i = 0; etcArray.length >= i; i++){
                     userInput = String.join(",",etcArray);
-                }
+                }*/
             }
         }
+        String userInput = String.join(",", symptoms);
         // JSON 형식으로 데이터 생성
         String jsonBody = "{\"symptoms\": \"" + userInput + "\"}";
         System.out.println(jsonBody);
@@ -147,9 +168,28 @@ public class AIController {
             String scriptOutput2 = chatService2.runScriptWithInput(ask2);
             model.addAttribute("scriptOutput2",scriptOutput2);
 
+            try {
+                // 한글 문자열을 UTF-8로 URL 인코딩
+                String encodedValue = URLEncoder.encode(scriptOutput2, StandardCharsets.UTF_8.toString());
+
+                // 쿠키 생성
+                Cookie cookie = new Cookie("scriptOutput2", encodedValue);
+                cookie.setPath("/user/map"); // 쿠키가 전송될 경로 설정
+                cookie.setMaxAge(60 * 30); // 쿠키의 유효 시간 설정(예: 1시간)
+
+                // 응답에 쿠키 추가
+                response.addCookie(cookie);
+            } catch (Exception e) {
+                // 인코딩 실패 시 처리
+                e.printStackTrace();
+            }
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
 
         // 이동할 View의 이름을 반환
         return "askAI";
