@@ -59,3 +59,23 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+document.addEventListener("DOMContentLoaded", function () {
+
+    const header = document.getElementById("typingHeader"); // id가 typingHeader html을 사용
+    const text = header.innerHTML; //header 안에 있는 내용
+    header.innerHTML = ''; // html안에있는 내용을 초기화
+
+    let i = 0;
+    const speed = 50; //타이핑 속도, 단위 밀리초
+
+    function typeWriter() {
+        if(i < text.length){
+            //문자열 길이만큼 반복
+            header.innerHTML += text.charAt(i); // 초기화된 html에 다음 문자를 더함
+            i++;
+            setTimeout(typeWriter,speed);
+        }
+    }
+
+    typeWriter();
+})
