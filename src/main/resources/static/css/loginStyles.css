@@ -7,6 +7,7 @@
     --greyLight-2: #c8d0e7;
     --greyLight-3: #bec8e4;
     --greyDark: #9baacf;
+    --pastelBlue: #6BA5FF;
 }
 
 *, *::before, *::after {
@@ -190,7 +191,6 @@ html {
     width: 15rem;
     height: 4rem;
     border-radius: 1rem;
-    box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
     justify-self: center;
     display: flex;
     align-items: center;
@@ -204,8 +204,7 @@ html {
 .btn__primary {
     grid-column: 1/2;
     grid-row: 4/5;
-    background: var(--primary);
-    box-shadow: inset 0.2rem 0.2rem 1rem var(--primary-light), inset -0.2rem -0.2rem 1rem var(--primary-dark), 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+    background: black;
     color: var(--greyLight-1);
     width: calc(100% - 2rem); /* 입력창과 로그인 버튼의 너비를 조정합니다. */
     padding: 0.5rem; /* 입력창과 로그인 버튼의 안쪽 여백을 추가합니다. */
@@ -215,7 +214,6 @@ html {
     transform: scale(1.03); /* 버튼 크기를 약간 키움 */
 }
 .btn__primary:active {
-    box-shadow: inset 0.2rem 0.2rem 1rem var(--primary-dark), inset -0.2rem -0.2rem 1rem var(--primary-light);
 }
 .btn__secondary {
     grid-column: 1/2;
@@ -226,7 +224,6 @@ html {
     color: var(--primary);
 }
 .btn__secondary:active {
-    box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
 }
 .btn p {
     font-size: 1.6rem;
@@ -446,20 +443,21 @@ html {
     width: 20.4rem;
     height: 4rem;
     border: none;
-    border-radius: 1rem;
+    border-radius: 5px;
     font-size: 1.4rem;
     padding-left: 1.4rem;
-    box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
-    background: none;
+    background: whitesmoke;
     font-family: inherit;
-    color: var(--greyDark);
+    color: black;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08), /* 부드러운 떠 있는 명암 효과 */
+                0 1px 3px rgba(0, 0, 0, 0.08);
 }
 .form__input::placeholder {
-    color: var(--greyLight-3);
+    color: black;
 }
 .form__input:focus {
     outline: none;
-    box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+    transform: scale(1.01); /* 버튼 크기를 약간 키움 */
 }
 
 /*  SEARCH  */
@@ -687,14 +685,20 @@ body, html {
     justify-content: center;
     align-items: center;
     height: 66.666vh; /* 화면 높이의 2/3 */
+    background-color: black;
 }
-.container-lg-d-flex{
+.container-lg-d-flex {
+    /*background-image: url('/images/loginbackground.jpg');*/
+    background-size: cover;
+    background-repeat: no-repeat;
     background-color: white;
     padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 볼록한 효과를 주는 그림자 */
-
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: white;
+    /* 필요에 따라 다른 스타일을 추가합니다 */
 }
+
 
 .card {
     width: 32rem; /* 카드의 너비를 40rem으로 설정합니다. */
@@ -758,4 +762,10 @@ body, html {
 .hospital-map {
     margin-top: 20px;
 }
-
+body {
+    background-color: black;
+}
+.labelclass{
+    color: black;
+    font-size: 30px;
+}

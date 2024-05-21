@@ -7,6 +7,7 @@
     --greyLight-2: #c8d0e7;
     --greyLight-3: #bec8e4;
     --greyDark: #9baacf;
+    --pastelBlue: #6BA5FF;
 }
 
 *, *::before, *::after {
@@ -19,7 +20,7 @@ html {
     box-sizing: border-box;
     font-size: 62.5%;
     overflow-y: scroll;
-    background: var(--greyLight-1);
+    background: BLACK;
 }
 @media screen and (min-width: 900px) {
     html {
@@ -33,25 +34,24 @@ html {
     justify-content: center;
     align-items: center;
     font-family: "Poppins", sans-serif;
-    background: var(--greyLight-1);
+    background: BLACK;
 }
 
 .components {
-    width: 112.5rem;
-    height: 60rem;
-    border-radius: 3rem;
-    box-shadow: 0.8rem 0.8rem 1.4rem var(--greyLight-2), -0.2rem -0.2rem 1.8rem var(--white);
-    padding: 4rem;
+    width: 112.5rem; /* 컴포넌트의 너비 설정 */
+    height: 60rem; /* 컴포넌트의 높이 설정 */
+    padding: 4rem; /* 컴포넌트 내부에 여백 추가 */
     display: grid;
-    grid-template-columns: 1fr; /* One fixed column */
-    grid-auto-rows: min-content; /* Row height adjusts based on content */
-    grid-gap: 1.6rem; /* Decrease gap between rows and columns */
-    justify-items: center; /* Align items horizontally at the center */
-    align-items: center; /* Align items vertically at the center */
-    justify-content: center; /* Center the grid horizontally */
-    align-content: center; /* Center the grid vertically */
+    grid-template-columns: repeat(auto-fit, minmax(min-content, 1fr)); /* 동적 열 생성 */
+    grid-auto-rows: min-content; /* 내용에 따라 행 높이 조정 */
+    grid-gap: 1.6rem; /* 행과 열 사이의 간격 축소 */
+    justify-items: center; /* 항목을 수평으로 가운데 정렬 */
+    align-items: center; /* 항목을 수직으로 가운데 정렬 */
+    justify-content: center; /* 그리드를 수평으로 중앙 정렬 */
+    align-content: center; /* 그리드를 수직으로 중앙 정렬 */
     position: relative;
 }
+
 
 /*  SWITCH  */
 .switch {
@@ -272,30 +272,16 @@ html {
     top: 20%; /* 상단에서 50% 위치에 */
     left: 50%; /* 왼쪽에서 50% 위치에 */
     transform: translate(-50%, -50%); /* 가운데 정렬을 위해 X축과 Y축 모두를 -50% 이동 */
-    max-width: 90%; /* 최대 너비 설정 */
-    max-height: 90%; /* 최대 높이 설정 */
-    width: auto; /* 가로 크기 자동 조정 */
-    min-width: 650px;
-    height: auto; /* 세로 크기 자동 조정 */
-    border-radius: 1rem;
-    box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+    width: 1000px; /* 가로 크기 자동 조정 */
+    min-width: 1000px;
+    height: 160px; /* 세로 크기 자동 조정 */
     display: flex;
-    flex-direction: column; /* 내부 요소들을 세로로 배치 */
+    flex-direction: row; /* 내부 요소들을 세로로 배치 */
     justify-content: center; /* 수직 가운데 정렬 */
     align-items: center; /* 수평 가운데 정렬 */
-    z-index: 1000; /* 다른 요소들 위에 보이도록 z-index 설정 */
+    font-weight: bolder;
 }
-.chip__icon {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 1rem;
-    margin: 0 0 0 0.2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.8rem;
-    color: var(--primary);
-}
+
 .chip p {
     font-size: 0.9rem;
     margin-left: -1.8rem;
@@ -600,23 +586,74 @@ html {
     color: #EA4C89;
 }
 .header {
+    font-size: 56px;
     text-align: center;
-    color: #6d5dfc;
+    color: #6BA5FF;
     padding: 5%;
-    animation: textGrowShrink 3s infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
 }
 body, html {
     min-width: 50%;
     min-height: 50%;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
 }
 .message {
     font-size: 26px;
     text-align: center; /* 가운데 정렬 */
     min-width: 650px;
     margin-top: 15px;
+    color: white;
 }
 @keyframes textGrowShrink {
     0% { font-size: 35px; } /* 시작 크기 */
     50% { font-size: 36px; } /* 중간 크기 */
     100% { font-size: 35px; } /* 최종 크기 */
+}
+.buttons{
+    display: flex; /* Flexbox 컨테이너로 설정하여 하위 요소들을 수평으로 배치 */
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+}
+.image-text{
+    position: absolute; /* 절대 위치 설정 */
+    bottom: 10px; /* 아래쪽 여백 */
+    left: 10px; /* 왼쪽 여백 */
+    color: white; /* 텍스트 색상 */
+    font-size: 18px; /* 텍스트 크기 */
+}
+.image-container {
+    position: relative; /* 상대적인 위치 설정 */
+    display: inline-block; /* 요소가 inline block 요소로 표시되도록 설정 */
+    padding-right: 10px;
+    padding-left: 10px;
+    transition: transform 0.2s ease; /* 변환 효과를 부드럽게 적용 */
+}
+.image-container:hover{
+    transform: scale(1.03); /* 호버 시 이미지를 1.1배로 확대 */
+}
+.image-text {
+    position: absolute; /* 절대 위치 설정 */
+    bottom: 25px; /* 아래쪽 여백 */
+    left: 35px; /* 왼쪽 여백 */
+    color: white; /* 텍스트 색상 */
+    font-size: 25px; /* 텍스트 크기 */
+}
+
+.img_class{
+    width: 300px;
+    height: 300px;
+    border-radius: 5px;
+    transition: transform 0.2s ease;
+}
+
+.image-text-2{
+    position: absolute; /* 절대 위치 설정 */
+    bottom: 13px; /* 아래쪽 여백 */
+    left: 36px; /* 왼쪽 여백 */
+    color: white; /* 텍스트 색상 */
+    font-size: 12px; /* 텍스트 크기 */
 }
