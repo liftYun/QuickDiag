@@ -20,6 +20,7 @@
             box-shadow: 0.8rem 0.8rem 1.4rem var(--greyLight-2), -0.2rem -0.2rem 1.8rem var(--white);
             padding: 4rem;
             position: relative;
+            order: 2; /* components1 요소를 chip 위에 배열 */
         }
 
         form{
@@ -42,13 +43,13 @@
     </div>
 </div>
 
-<div class="chip">
-    <div class="chip__icon">
-        <ion-icon name="fitness-outline"></ion-icon>
+<div class="container">
+    <div class="chip">
+        <div class="chip__icon">
+            <ion-icon name="fitness-outline"></ion-icon>
+        </div>
+        <h2 style="text-align: center; color: #6d5dfc; margin-right: 170px" >증상 선택</h2>
     </div>
-    <h2 style="text-align: center; color: #6d5dfc; margin-right: 170px" >증상 선택</h2>
-</div>
-<div class="container" style="padding-top: 100px">
     <div class="components1">
         <div class="segmented-control">
 

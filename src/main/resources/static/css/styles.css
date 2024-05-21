@@ -21,6 +21,7 @@ html {
     overflow-y: scroll;
     background: var(--greyLight-1);
 }
+
 @media screen and (min-width: 900px) {
     html {
         font-size: 75%;
@@ -29,7 +30,7 @@ html {
 
 .container {
     min-height: 100vh;
-    display: flex;
+    display: grid;
     justify-content: center;
     align-items: center;
     font-family: "Poppins", sans-serif;
@@ -42,7 +43,7 @@ html {
     border-radius: 3rem;
     box-shadow: 0.8rem 0.8rem 1.4rem var(--greyLight-2), -0.2rem -0.2rem 1.8rem var(--white);
     padding: 4rem;
-    display: grid;
+    display: flex;
     grid-template-columns: 1fr; /* 1열로 고정 */
     grid-auto-rows: min-content; /* 각 행의 높이가 그 행의 내용에 따라 자동으로 결정됨 */
     grid-gap: 2.5rem; /* 행과 열 사이의 간격 */
@@ -51,6 +52,7 @@ html {
     justify-content: center; /* 그리드 자체를 가로 방향으로 중앙에 정렬 */
     align-content: center; /* 그리드 자체를 세로 방향으로 중앙에 정렬 */
     position: relative;
+    order: 2;
 }
 
 /*  CHECKBOX  */
@@ -196,10 +198,10 @@ html {
 
 /*  CHIP  */
 .chip {
-    position: fixed; /* 위치를 고정 */
-    top: 0; /* 상단에서 0의 위치에 */
+    position: relative; /* 위치를 고정 */
+    top: 0%; /* 상단에서 0의 위치에 */
     left: 50%; /* 왼쪽에서 50% 위치에 (가운데 정렬을 위해) */
-    transform: translateX(-50%); /* X축 기준으로 -50% 이동하여 정확한 중앙 정렬 */
+    transform: translateX(-50%) ; /* X축 기준으로 -50% 이동하여 정확한 중앙 정렬 */
     width: 34rem;
     height: 8rem;
     border-radius: 1rem;
@@ -207,7 +209,7 @@ html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /*z-index: 1000; !* 다른 요소들 위에 보이도록 z-index 설정 *!*/
+    z-index: 1000; /* 다른 요소들 위에 보이도록 z-index 설정 */
 }
 .chip__icon {
     width: 3rem;
@@ -236,6 +238,30 @@ html {
 }
 
 /*  FORM  */
+.form {
+    grid-column: 3/4;
+    grid-row: 3/4;
+
+}
+.form__input {
+    width: 20.4rem;
+    height: 4rem;
+    border: none;
+    border-radius: 1rem;
+    font-size: 1.4rem;
+    padding-left: 1.4rem;
+    box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+    background: none;
+    font-family: inherit;
+    color: var(--greyDark);
+}
+.form__input::placeholder {
+    color: var(--greyLight-3);
+}
+.form__input:focus {
+    outline: none;
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+}
 .segmented-control {
 
     width: 68rem;
