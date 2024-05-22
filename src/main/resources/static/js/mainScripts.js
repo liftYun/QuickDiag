@@ -79,3 +79,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     typeWriter();
 })
+document.addEventListener("DOMContentLoaded", function() {
+    let elements = document.querySelectorAll('.image-container');
+    elements.forEach((element, index) => {
+        setTimeout(() => {
+            element.style.opacity = '1'; // opacity를 1로 설정하여 서서히 나타나도록 함
+        }, 1800 + index * 500); // 1초 후부터 시작하여 1초 간격으로 나타남
+    });
+});
