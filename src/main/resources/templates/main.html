@@ -16,7 +16,7 @@
         </div>
         <p class="message"></p>
         <div class="buttons">
-            <div th:if="${loginUserId == null}">
+            <div class="div_if" th:if="${loginUserId == null}">
                 <div class="image-container">
                     <a href="/user/login" onclick="alert('로그인이 필요합니다.');">
                         <img src="/images/red.jpg" alt="로그인"  class="img_class"/>
@@ -26,7 +26,7 @@
                 </div>
             </div>
 
-            <div th:unless="${loginUserId == null}">
+            <div class="div_if" th:unless="${loginUserId == null}">
                 <div class="image-container">
                     <a href="#" onclick="checkBeforeRedirect(event)">
                         <img src="/images/blue.jpg" alt="리다이렉트"   class="img_class"/>
@@ -36,7 +36,7 @@
                 </div>
             </div>
 
-            <div th:if="${loginUserId != null}">
+            <div class="div_if" th:if="${loginUserId != null}">
                 <div class="image-container">
                     <a href="/user/userData" style="text-decoration: none;">
                         <img src="/images/bluered.jpg" alt="데이터 입력"   class="img_class"/>
@@ -46,7 +46,7 @@
                 </div>
             </div>
 
-            <div th:if="${loginUserId == null}">
+            <div class="div_if" th:if="${loginUserId == null}">
                 <div class="image-container">
                     <a href="/user/login" style="text-decoration: none;">
                         <img src="/images/green.jpg" alt="로그인"   class="img_class"/>
@@ -56,7 +56,7 @@
                 </div>
             </div>
 
-            <div th:if="${loginUserId == null}">
+            <div class="div_if" th:if="${loginUserId == null}">
                 <div class="image-container">
                     <a href="/user/register" style="text-decoration: none;">
                         <img src="/images/pinkskyblue.jpg" alt="회원가입"  class="img_class"/>
@@ -66,7 +66,7 @@
                 </div>
             </div>
 
-            <div th:if="${loginUserId != null}">
+            <div class="div_if" th:if="${loginUserId != null}">
                 <div class="image-container">
                     <a href="/user/logout" style="text-decoration: none;">
                         <img src="/images/purple.jpg" alt="로그아웃"   class="img_class"/>
@@ -76,7 +76,7 @@
                 </div>
             </div>
 
-            <div th:if="${loginUserId != null}">
+            <div class="div_if" th:if="${loginUserId != null}">
                 <div class="image-container">
                     <a href="/user/mypage" style="text-decoration: none;">
                         <img src="/images/pink.jpg" alt="마이페이지"   class="img_class"/>

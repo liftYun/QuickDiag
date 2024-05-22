@@ -626,23 +626,25 @@ body, html {
     font-size: 18px; /* 텍스트 크기 */
 }
 .image-container {
-    position: relative; /* 상대적인 위치 설정 */
-    display: inline-block; /* 요소가 inline block 요소로 표시되도록 설정 */
-    padding-right: 10px;
-    padding-left: 10px;
-    transition: transform 0.2s ease; /* 변환 효과를 부드럽게 적용 */
+    position: relative;
+    display: inline-block;
+    padding: 15px;
+    transition: transform 0.5s ease, opacity 0.5s ease, border-radius 0.5s ease; /* 변화를 더 느리게 적용 */
+    opacity: 0; /* 초기에는 보이지 않도록 설정 */
 }
-.image-container:hover{
-    transform: scale(1.03); /* 호버 시 이미지를 1.1배로 확대 */
+.image-container:hover {
+    transform: scale(1.05); /* 호버 시 이미지를 1.05배로 확대 */
+    border-radius: 10px;
+    opacity: 1; /* 호버 시 이미지가 보이도록 설정 */
 }
+
 .image-text {
     position: absolute; /* 절대 위치 설정 */
-    bottom: 25px; /* 아래쪽 여백 */
+    bottom: 40px; /* 아래쪽 여백 */
     left: 35px; /* 왼쪽 여백 */
     color: white; /* 텍스트 색상 */
     font-size: 25px; /* 텍스트 크기 */
 }
-
 .img_class{
     width: 300px;
     height: 300px;
@@ -652,7 +654,7 @@ body, html {
 
 .image-text-2{
     position: absolute; /* 절대 위치 설정 */
-    bottom: 13px; /* 아래쪽 여백 */
+    bottom: 28px; /* 아래쪽 여백 */
     left: 36px; /* 왼쪽 여백 */
     color: white; /* 텍스트 색상 */
     font-size: 12px; /* 텍스트 크기 */
