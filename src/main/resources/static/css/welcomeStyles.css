@@ -1,0 +1,36 @@
+.body{
+    background-color: black;
+}
+html{
+    background-color: black;
+}
+.container{
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    height: 100vh;
+    display: flex;
+}
+.header{
+    color: #6BA5FF;
+    font-weight: bolder;
+    font-size: 500%;
+    opacity: 0;
+    animation: fadeInOut 3s forwards;
+}
+@keyframes  fadeInOut {
+    0%{
+        opacity: 0;
+    }
+    25%{
+        opacity: 1;
+    }
+    75%{
+        opacity: 1;
+    }
+    75%{
+        opacity: 0;
+    }
+
+}
