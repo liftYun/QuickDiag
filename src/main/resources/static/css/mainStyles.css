@@ -271,10 +271,10 @@ html {
     position: fixed; /* 위치를 고정 */
     top: 20%; /* 상단에서 50% 위치에 */
     left: 50%; /* 왼쪽에서 50% 위치에 */
-    transform: translate(-50%, -50%); /* 가운데 정렬을 위해 X축과 Y축 모두를 -50% 이동 */
-    width: 1000px; /* 가로 크기 자동 조정 */
+    transform: translate(-50%, -50%); /* 가운데 정렬을 위해 X축과 Y축 모두를 -50% 이동 */ /* 가로 크기 자동 조정 */
     min-width: 1000px;
     height: 160px; /* 세로 크기 자동 조정 */
+    width: auto;
     display: flex;
     flex-direction: row; /* 내부 요소들을 세로로 배치 */
     justify-content: center; /* 수직 가운데 정렬 */
